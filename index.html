@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>BULOG | Mengantarkan Kebaikan</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: #1e293b;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --blue-primary: #0A4B7A;
+            --blue-light: #EFF6FF;
+            --yellow-primary: #F5B042;
+            --yellow-soft: #FEF3C7;
+            --white: #ffffff;
+            --gray-text: #334155;
+            --gray-light: #f8fafc;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== HEADER ========== */
+        .top-banner {
+            background: var(--blue-primary);
+            color: white;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .top-banner i {
+            margin-right: 6px;
+            color: var(--yellow-primary);
+        }
+
+        .site-header {
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #eef2ff;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 16px 0;
+            gap: 20px;
+        }
+
+        .logo-area img {
+            height: 55px;
+            width: auto;
+            display: block;
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        .main-nav a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #1e293b;
+            transition: 0.2s;
+        }
+        .main-nav a:hover, .main-nav a.active {
+            color: var(--blue-primary);
+            border-bottom: 2px solid var(--yellow-primary);
+            padding-bottom: 4px;
+        }
+        .mobile-toggle {
+            display: none;
+            font-size: 1.7rem;
+            cursor: pointer;
+            color: var(--blue-primary);
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            background: linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%);
+            padding: 60px 0 70px;
+            border-bottom: 1px solid rgba(245,176,66,0.3);
+        }
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 48px;
+        }
+        .hero-content {
+            flex: 1;
+            min-width: 280px;
+        }
+        .hero-badge {
+            background: var(--yellow-soft);
+            color: var(--blue-primary);
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            margin-bottom: 20px;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #0f172a;
+            margin-bottom: 18px;
+        }
+        .hero-content h1 span {
+            background: linear-gradient(120deg, var(--yellow-primary), #facc15);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--gray-text);
+            margin-bottom: 28px;
+            max-width: 520px;
+        }
+        .btn-kuning {
+            background: var(--yellow-primary);
+            color: #1e293b;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 44px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 8px rgba(245,176,66,0.3);
+        }
+        .btn-kuning:hover {
+            background: #e6a12e;
+            transform: translateY(-2px);
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 48px 24px 48px 24px;
+            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.15);
+        }
+
+        /* ========== PRODUK ========== */
+        .products-section {
+            padding: 70px 0;
+            background: white;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+        .section-header .tagline {
+            color: var(--blue-primary);
+            font-weight: 700;
+            background: var(--yellow-soft);
+            display: inline-block;
+            padding: 4px 20px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+        }
+        .section-header h3 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-top: 12px;
+        }
+        .section-header h3 span {
+            color: var(--blue-primary);
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 36px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.05);
+            border: 1px solid #f0f4f9;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 28px 36px -12px rgba(0, 0, 0, 0.12);
+            border-color: var(--yellow-primary);
+        }
+        .card-img {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #f9fcff, #ffffff);
+            height: 200px;
+            padding: 16px;
+            border-bottom: 2px solid var(--yellow-soft);
+        }
+        .card-img img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            transition: 0.2s;
+        }
+        .card-content {
+            padding: 24px 22px 28px;
+        }
+        .product-brand {
+            background: var(--blue-primary);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+        .card-content h4 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .card-desc {
+            color: var(--gray-text);
+            font-size: 0.85rem;
+            margin: 12px 0;
+        }
+        .price {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--blue-primary);
+            margin-bottom: 20px;
+        }
+        .btn-product {
+            background: transparent;
+            border: 1.5px solid var(--blue-primary);
+            color: var(--blue-primary);
+            width: 100%;
+            padding: 10px;
+            border-radius: 48px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+        }
+        .btn-product:hover {
+            background: var(--blue-primary);
+            color: white;
+            border-color: var(--blue-primary);
+        }
+
+        /* ========== NILAI ========== */
+        .value-section {
+            background: var(--blue-light);
+            padding: 70px 0;
+        }
+        .value-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            margin-top: 24px;
+        }
+        .value-card {
+            background: white;
+            border-radius: 32px;
+            padding: 32px 24px;
+            text-align: center;
+            flex: 1;
+            min-width: 220px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            border: 1px solid rgba(10,75,122,0.1);
+        }
+        .value-icon {
+            background: var(--yellow-soft);
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 60px;
+            font-size: 2rem;
+            color: var(--blue-primary);
+        }
+        .value-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: #0B2B40;
+            color: #cbd5e6;
+            padding: 48px 0 28px;
+        }
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col p {
+            margin-top: 14px;
+            max-width: 280px;
+            font-size: 0.85rem;
+        }
+        .footer-col h5 {
+            color: var(--yellow-primary);
+            margin-bottom: 18px;
+            font-size: 1.1rem;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+        .footer-col a {
+            color: #cbd5e6;
+            text-decoration: none;
+        }
+        .footer-col a:hover {
+            color: var(--yellow-primary);
+        }
+        .social-icons {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .social-icons a {
+            background: #1e3a5f;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .copyright {
+            border-top: 1px solid #1e3a5f;
+            padding-top: 28px;
+            text-align: center;
+            font-size: 0.75rem;
+        }
+
+        /* ========== MODAL POPUP ========== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(4px);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            margin: auto;
+            padding: 0;
+            border-radius: 32px;
+            width: 90%;
+            max-width: 900px;
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.3s ease;
+            overflow: hidden;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .modal-img {
+            flex: 1;
+            background: #f9fcff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px;
+            min-width: 240px;
+        }
+        .modal-img img {
+            max-width: 100%;
+            max-height: 320px;
+            object-fit: contain;
+            border-radius: 24px;
+        }
+        .modal-info {
+            flex: 1;
+            padding: 32px 28px;
+            background: white;
+        }
+        .modal-info .product-brand {
+            margin-bottom: 16px;
+        }
+        .modal-info h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+        .modal-info .price {
+            font-size: 1.8rem;
+            margin: 16px 0 12px;
+        }
+        .modal-info .desc {
+            color: var(--gray-text);
+            margin: 16px 0;
+            line-height: 1.6;
+        }
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            font-size: 32px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            transition: 0.2s;
+            z-index: 10;
+            background: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .close-modal:hover {
+            color: #333;
+            background: #f0f0f0;
+        }
+        .modal-btn {
+            background: var(--yellow-primary);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 48px;
+            font-weight: 700;
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        @media (max-width: 720px) {
+            .modal-content {
+                flex-direction: column;
+                max-width: 95%;
+                margin: 20px auto;
+            }
+            .modal-img {
+                padding: 24px;
+            }
+            .modal-info {
+                padding: 24px;
+            }
+            .modal-info h2 {
+                font-size: 1.6rem;
+            }
+            .mobile-toggle {
+                display: block;
+            }
+            .main-nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                background: white;
+                width: 75%;
+                height: 100%;
+                box-shadow: 6px 0 20px rgba(0,0,0,0.15);
+                transition: 0.3s;
+                z-index: 200;
+                padding: 100px 28px 28px;
+            }
+            .main-nav.open {
+                left: 0;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                gap: 24px;
+            }
+            .hero-grid {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .section-header h3 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-banner">
+    <div class="container">
+        <i class="fas fa-truck-fast"></i> Mengantarkan kebaikan untuk Indonesia | Distribusi pangan merata & berkualitas
+    </div>
+</div>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <div class="logo-area">
+            <img src="logo bulog.png" alt="Logo BULOG">
+        </div>
+        <div class="mobile-toggle" id="mobileToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav class="main-nav" id="mainNav">
+            <ul>
+                <li><a href="#" class="active">Beranda</a></li>
+                <li><a href="#">Tentang Kami</a></li>
+                <li><a href="#">Bisnis</a></li>
+                <li><a href="#">Pelayanan Publik</a></li>
+                <li><a href="#">Berita & Informasi</a></li>
+                <li><a href="#">Karir</a></li>
+                <li><a href="#">Kontak</a></li>
+                <li><a href="#">Keterbukaan Informasi</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge"><i class="fas fa-leaf"></i> Cadangan Pangan Nasional</div>
+                <h1>Mengantarkan <span>Kebaikan</span><br>Dari Petani ke Meja Anda</h1>
+                <p>BULOG hadir sebagai garda terdepan ketahanan pangan, menyediakan beras premium, gula, minyak, dan produk pilihan lainnya dengan harga stabil.</p>
+                <button class="btn-kuning" id="exploreBtn"><i class="fas fa-shopping-bag"></i> Jelajahi Produk Kita</button>
+            </div>
+            <div class="hero-image">
+                <img src="backdrop.png" alt="BULOG mengantarkan kebaikan">
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section" id="produk">
+        <div class="container">
+            <div class="section-header">
+                <div class="tagline"><i class="fas fa-star"></i>  Produk Pilihan Bulog  </div>
+                <h3>Komoditas <span>Terbaik</span> untuk Keluarga</h3>
+                <p>Beras premium, minyak sehat, tepung, dan ragam produk befood yang praktis.</p>
+            </div>
+            <div class="product-grid">
+                <!-- Produk 1 -->
+                <div class="product-card">
+                    <div class="card-img">
+                        <img src="1.png" alt="SETRA RAMOS">
+                    </div>
+                    <div class="card-content">
+                        <span class="product-brand">Beras Premium</span>
+                        <h4>SETRA RAMOS</h4>
+                        <div class="card-desc">Beras butir panjang, pulen, aroma harum alami. Tersedia 5kg & 10kg.</div>
+                        <div class="price">Rp 79.000 /5kg</div>
+                        <button class="btn-product">Lihat Detail</button>
+                    </div>
+                </div>
+                <!-- Produk 2 -->
+                <div class="product-card">
+                    <div class="card-img">
+                        <img src="2.png" alt="SLYP SUPER">
+                    </div>
+                    <div class="card-content">
+                        <span class="product-brand">Beras Premium</span>
+                        <h4>SLYP SUPER</h4>
+                        <div class="card-desc">Beras super white, butir utuh, kandungan gizi seimbang, cocok untuk sehari-hari.</div>
+                        <div class="price">Rp 73.000 /5kg</div>
+                        <button class="btn-product">Lihat Detail</button>
+                    </div>
+                </div>
+                <!-- Produk 3 -->
+                <div class="product-card">
+                    <div class="card-img">
+                        <img src="3.png" alt="Beraskita-Family">
+                    </div>
+                    <div class="card-content">
+                        <span class="product-brand">Beraskita</span>
+                        <h4>Beraskita-Family</h4>
+                        <div class="card-desc">Nasi instan praktis, cukup seduh air panas, siap saji dalam 5 menit.</div>
+                        <div class="price">Rp 12.000 /porsi</div>
+                        <button class="btn-product">Lihat Detail</button>
+                    </div>
+                </div>
+                <!-- Produk 4 -->
+                <div class="product-card">
+                    <div class="card-img">
+                        <img src="4.png" alt="Fortivit">
+                    </div>
+                    <div class="card-content">
+                        <span class="product-brand">befood</span>
+                        <h4>Fortivit</h4>
+                        <div class="card-desc">Beras fortifikasi vitamin A, kemasan 5Kg praktis.</div>
+                        <div class="price">Rp 16.500 /Kg</div>
+                        <button class="btn-product">Lihat Detail</button>
+                    </div>
+                </div>
+                <!-- Produk 5 -->
+                <div class="product-card">
+                    <div class="card-img">
+                        <img src="5.png" alt="Terigu Kita">
+                    </div>
+                    <div class="card-content">
+                        <span class="product-brand">befood</span>
+                        <h4>Terigu Kita</h4>
+                        <div class="card-desc">Kudapan sehat berbahan dasar pangan lokal, tinggi serat.</div>
+                        <div class="price">Rp 8.500 /kemasan</div>
+                        <button class="btn-product">Lihat Detail</button>
+                    </div>
+                </div>
+                <!-- Produk 6 -->
+                <div class="product-card">
+                    <div class="card-img">
+                        <img src="6.png" alt="befood Flour">
+                    </div>
+                    <div class="card-content">
+                        <span class="product-brand">befood</span>
+                        <h4>befood Flour</h4>
+                        <div class="card-desc">Tepung terigu serbaguna untuk roti, mie, dan kue.</div>
+                        <div class="price">Rp 11.000 /kg</div>
+                        <button class="btn-product">Lihat Detail</button>
+                    </div>
+                </div>
+                <!-- Produk 7 -->
+                <div class="product-card">
+                    <div class="card-img">
+                        <img src="7.png" alt="befood Noodle">
+                    </div>
+                    <div class="card-content">
+                        <span class="product-brand">befood</span>
+                        <h4>befood Noodle</h4>
+                        <div class="card-desc">Mie instan fortifikasi, rendah minyak, rasa gurih alami.</div>
+                        <div class="price">Rp 6.500 /bungkus</div>
+                        <button class="btn-product">Lihat Detail</button>
+                    </div>
+                </div>
+                <!-- Produk 8 -->
+                <div class="product-card">
+                    <div class="card-img">
+                        <img src="8.png" alt="befood Drink">
+                    </div>
+                    <div class="card-content">
+                        <span class="product-brand">befood</span>
+                        <h4>befood Drink</h4>
+                        <div class="card-desc">Minuman sereal kesehatan, tinggi kalsium dan vitamin.</div>
+                        <div class="price">Rp 14.500 /sachet</div>
+                        <button class="btn-product">Lihat Detail</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="value-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="tagline"><i class="fas fa-hand-holding-heart"></i>  Mengantarkan Kebaikan  </div>
+                <h3>Komitmen <span>BULOG</span> untuk Negeri</h3>
+            </div>
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-chart-line"></i></div>
+                    <h4>Stabilisasi Harga</h4>
+                    <p>Menjaga daya beli masyarakat dan pasokan pangan.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-truck-ramp-box"></i></div>
+                    <h4>Distribusi Merata</h4>
+                    <p>Lebih dari 27.000 mitra RPK hingga pelosok.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-seedling"></i></div>
+                    <h4>Pangan Berkualitas</h4>
+                    <p>Standar mutu & keamanan pangan nasional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h5><i class="fas fa-warehouse"></i> Perum BULOG</h5>
+                <p>Mengantarkan kebaikan melalui ketahanan pangan dan distribusi merata untuk seluruh Indonesia.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h5>Bisnis Kami</h5>
+                <ul>
+                    <li><a href="#">Produk & Brand</a></li>
+                    <li><a href="#">Rumah Pangan Kita</a></li>
+                    <li><a href="#">Mitra Tani</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Layanan Publik</h5>
+                <ul>
+                    <li><a href="#">Informasi Harga Pangan</a></li>
+                    <li><a href="#">Cadangan Pangan</a></li>
+                    <li><a href="#">Pengaduan Masyarakat</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Kontak Kami</h5>
+                <ul>
+                    <li><i class="fas fa-phone-alt"></i> 021-5252209</li>
+                    <li><i class="fas fa-envelope"></i> bulog@bulog.co.id</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Jakarta Pusat</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 BULOG - Bersama Mengantarkan Kebaikan untuk Pangan Nusantara</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Modal Popup -->
+<div id="productModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-img">
+            <img id="modalImage" src="" alt="Produk">
+        </div>
+        <div class="modal-info">
+            <span class="product-brand" id="modalBrand"></span>
+            <h2 id="modalTitle"></h2>
+            <div class="price" id="modalPrice"></div>
+            <div class="desc" id="modalDesc"></div>
+            <button class="modal-btn" id="modalBuyBtn"><i class="fas fa-shopping-cart"></i> Beli Sekarang</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Mobile navigation toggle
+    const mobileBtn = document.getElementById('mobileToggle');
+    const navMenu = document.getElementById('mainNav');
+    mobileBtn?.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+        const icon = mobileBtn.querySelector('i');
+        if(navMenu.classList.contains('open')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
+    document.querySelectorAll('.main-nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('open');
+            const icon = mobileBtn.querySelector('i');
+            if(icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    });
+
+    // Scroll ke produk
+    const exploreBtn = document.getElementById('exploreBtn');
+    const produkSection = document.getElementById('produk');
+    if(exploreBtn && produkSection) {
+        exploreBtn.addEventListener('click', () => {
+            produkSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+
+    // Modal logic
+    const modal = document.getElementById('productModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalBrand = document.getElementById('modalBrand');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalDesc = document.getElementById('modalDesc');
+    const closeModal = document.querySelector('.close-modal');
+
+    function openModal(productData) {
+        modalImage.src = productData.img;
+        modalImage.alt = productData.title;
+        modalBrand.textContent = productData.brand;
+        modalTitle.textContent = productData.title;
+        modalPrice.textContent = productData.price;
+        modalDesc.textContent = productData.desc;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModalFunc() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    closeModal.addEventListener('click', closeModalFunc);
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) closeModalFunc();
+    });
+
+    // Event listener untuk semua tombol detail produk
+    const detailBtns = document.querySelectorAll('.btn-product');
+    detailBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const card = btn.closest('.product-card');
+            if (!card) return;
+            const imgSrc = card.querySelector('.card-img img')?.src || '';
+            const brand = card.querySelector('.product-brand')?.innerText || 'BULOG';
+            const title = card.querySelector('h4')?.innerText || 'Produk';
+            const price = card.querySelector('.price')?.innerText || '';
+            const desc = card.querySelector('.card-desc')?.innerText || '';
+            
+            openModal({
+                img: imgSrc,
+                brand: brand,
+                title: title,
+                price: price,
+                desc: desc
+            });
+        });
+    });
+
+    // Tombol beli di modal (contoh)
+    const modalBuyBtn = document.getElementById('modalBuyBtn');
+    if(modalBuyBtn) {
+        modalBuyBtn.addEventListener('click', () => {
+            alert('Terima kasih! Fitur pembelian akan segera terintegrasi.');
+        });
+    }
+</script>
+</body>
+</html>

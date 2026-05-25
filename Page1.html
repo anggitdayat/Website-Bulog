@@ -1,0 +1,754 @@
+Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenStreetMap showing the location of the Yogyakarta regional office.
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>BULOG | Tentang Kami - Mengantarkan Kebaikan</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Leaflet CSS (OpenStreetMap) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: #1e293b;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --blue-primary: #0A4B7A;
+            --blue-light: #EFF6FF;
+            --yellow-primary: #F5B042;
+            --yellow-soft: #FEF3C7;
+            --white: #ffffff;
+            --gray-text: #334155;
+            --gray-light: #f8fafc;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== HEADER (sama seperti asli) ========== */
+        .top-banner {
+            background: var(--blue-primary);
+            color: white;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+        .top-banner i {
+            margin-right: 6px;
+            color: var(--yellow-primary);
+        }
+
+        .site-header {
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #eef2ff;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 16px 0;
+            gap: 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+        .logo-icon {
+            background: var(--blue-primary);
+            color: var(--yellow-primary);
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            box-shadow: 0 6px 12px rgba(10,75,122,0.2);
+        }
+        .logo-text h2 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--blue-primary);
+            line-height: 1.2;
+            letter-spacing: -0.3px;
+        }
+        .logo-text span {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--yellow-primary);
+            background: var(--blue-primary);
+            padding: 2px 10px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        .main-nav a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #1e293b;
+            transition: 0.2s;
+        }
+        .main-nav a:hover, .main-nav a.active {
+            color: var(--blue-primary);
+            border-bottom: 2px solid var(--yellow-primary);
+            padding-bottom: 4px;
+        }
+        .mobile-toggle {
+            display: none;
+            font-size: 1.7rem;
+            cursor: pointer;
+            color: var(--blue-primary);
+        }
+
+        /* ========== TENTANG KAMI CUSTOM STYLES ========== */
+        .about-hero {
+            background: linear-gradient(115deg, #EFF6FF 0%, #FFFFFF 100%);
+            padding: 48px 0 56px;
+            border-bottom: 1px solid rgba(245,176,66,0.2);
+        }
+        .page-title {
+            text-align: center;
+        }
+        .page-title .badge {
+            background: var(--yellow-soft);
+            color: var(--blue-primary);
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+        }
+        .page-title h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+        .page-title h1 span {
+            color: var(--blue-primary);
+        }
+        .page-title p {
+            max-width: 650px;
+            margin: 16px auto 0;
+            color: var(--gray-text);
+            font-size: 1rem;
+        }
+
+        .about-intro {
+            padding: 64px 0 40px;
+        }
+        .two-columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px;
+            align-items: center;
+        }
+        .about-text {
+            flex: 1.2;
+        }
+        .about-text h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--blue-primary);
+        }
+        .about-text p {
+            margin-bottom: 18px;
+            color: var(--gray-text);
+            line-height: 1.6;
+        }
+        .about-stats {
+            flex: 0.8;
+            background: var(--blue-light);
+            border-radius: 32px;
+            padding: 32px 24px;
+            text-align: center;
+        }
+        .stat-item {
+            margin-bottom: 28px;
+        }
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--blue-primary);
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .visi-misi {
+            background: var(--gray-light);
+            padding: 64px 0;
+        }
+        .vm-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            margin-top: 32px;
+        }
+        .vm-card {
+            background: white;
+            border-radius: 28px;
+            padding: 32px;
+            flex: 1;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+            border: 1px solid #eef2ff;
+        }
+        .vm-card .icon {
+            font-size: 2.8rem;
+            color: var(--yellow-primary);
+            margin-bottom: 20px;
+        }
+        .vm-card h4 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .vm-card p, .vm-card ul {
+            color: var(--gray-text);
+        }
+        .vm-card ul {
+            padding-left: 1.2rem;
+        }
+        .vm-card li {
+            margin: 8px 0;
+        }
+
+        /* Section Kantor Wilayah + MAP */
+        .regional-section {
+            padding: 70px 0;
+            background: white;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .section-header .tagline {
+            background: var(--yellow-soft);
+            color: var(--blue-primary);
+            display: inline-block;
+            padding: 4px 20px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .section-header h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-top: 12px;
+            color: #0f172a;
+        }
+        .section-header h3 span {
+            color: var(--blue-primary);
+        }
+        .map-address-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            background: #fefdf8;
+            border-radius: 40px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border: 1px solid #f0e7d6;
+        }
+        .map-container {
+            flex: 1.5;
+            min-height: 420px;
+        }
+        #officeMap {
+            height: 100%;
+            min-height: 420px;
+            width: 100%;
+            z-index: 1;
+        }
+        .address-info {
+            flex: 1;
+            padding: 32px 28px;
+            background: white;
+        }
+        .address-info h4 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--blue-primary);
+            margin-bottom: 20px;
+        }
+        .address-detail {
+            margin: 20px 0;
+        }
+        .address-detail i {
+            width: 32px;
+            color: var(--yellow-primary);
+            font-size: 1.2rem;
+        }
+        .address-detail p {
+            display: inline-block;
+            margin-left: 8px;
+            color: #2c3e50;
+        }
+        .office-contact {
+            margin-top: 24px;
+            background: var(--blue-light);
+            padding: 20px;
+            border-radius: 24px;
+        }
+        .office-contact p {
+            margin: 8px 0;
+        }
+        .btn-directions {
+            margin-top: 20px;
+            background: var(--blue-primary);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-directions:hover {
+            background: #063a5c;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #0B2B40;
+            color: #cbd5e6;
+            padding: 48px 0 28px;
+        }
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col p {
+            margin-top: 14px;
+            max-width: 280px;
+            font-size: 0.85rem;
+        }
+        .footer-col h5 {
+            color: var(--yellow-primary);
+            margin-bottom: 18px;
+            font-size: 1.1rem;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+        .footer-col a {
+            color: #cbd5e6;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .footer-col a:hover {
+            color: var(--yellow-primary);
+        }
+        .social-icons {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .social-icons a {
+            background: #1e3a5f;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .copyright {
+            border-top: 1px solid #1e3a5f;
+            padding-top: 28px;
+            text-align: center;
+            font-size: 0.75rem;
+        }
+
+        @media (max-width: 850px) {
+            .page-title h1 {
+                font-size: 2rem;
+            }
+            .two-columns {
+                flex-direction: column;
+            }
+            .map-address-wrap {
+                flex-direction: column;
+            }
+            .map-container, #officeMap {
+                min-height: 350px;
+            }
+        }
+        @media (max-width: 720px) {
+            .mobile-toggle {
+                display: block;
+            }
+            .main-nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                background: white;
+                width: 75%;
+                height: 100%;
+                box-shadow: 6px 0 20px rgba(0,0,0,0.15);
+                transition: 0.3s;
+                z-index: 200;
+                padding: 100px 28px 28px;
+            }
+            .main-nav.open {
+                left: 0;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                gap: 24px;
+            }
+            .vm-grid {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-banner">
+    <div class="container">
+        <i class="fas fa-truck-fast"></i> Mengantarkan kebaikan untuk Indonesia | Distribusi pangan merata & berkualitas
+    </div>
+</div>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <div class="logo-area">
+            <div class="logo-icon">B</div>
+            <div class="logo-text">
+                <h2>BULOG</h2>
+                <span>mengantarkan kebaikan</span>
+            </div>
+        </div>
+        <div class="mobile-toggle" id="mobileToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav class="main-nav" id="mainNav">
+            <ul>
+                <li><a href="#" id="homeLink">Beranda</a></li>
+                <li><a href="#" class="active">Tentang Kami</a></li>
+                <li><a href="#">Bisnis</a></li>
+                <li><a href="#">Pelayanan Publik</a></li>
+                <li><a href="#">Berita & Informasi</a></li>
+                <li><a href="#">Karir</a></li>
+                <li><a href="#">Kontak</a></li>
+                <li><a href="#">Keterbukaan Informasi</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Halaman Tentang Kami -->
+    <section class="about-hero">
+        <div class="container page-title">
+            <div class="badge"><i class="fas fa-landmark"></i> Profil Perusahaan</div>
+            <h1>Mengantarkan <span>Kebaikan</span> untuk Negeri</h1>
+            <p>Menjadi garda ketahanan pangan nasional, menggerakkan distribusi dan stabilisasi harga, serta memberdayakan petani dan mitra di seluruh Indonesia.</p>
+        </div>
+    </section>
+
+    <!-- Intro & Sejarah singkat -->
+    <section class="about-intro">
+        <div class="container two-columns">
+            <div class="about-text">
+                <h3>Siapa BULOG?</h3>
+                <p>Perum BULOG (Badan Urusan Logistik) didirikan pada tahun 1967 sebagai wujud komitmen pemerintah dalam menjaga kedaulatan pangan. Dengan tugas utama mengelola cadangan pangan, stabilisasi harga, dan distribusi beras serta komoditas strategis, BULOG hadir di 34 provinsi dan ribuan kecamatan.</p>
+                <p>Melayanai lebih dari 270 juta masyarakat, BULOG tak hanya mengelola beras, tetapi juga gula, minyak goreng, tepung, serta produk inovatif befood yang menjawab kebutuhan pangan praktis & bergizi. Misi “Mengantarkan Kebaikan” menjadi fondasi setiap langkah kami.</p>
+                <p>Kantor Wilayah Yogyakarta (DIY) menjadi simpul strategis dalam mendistribusikan bahan pokok dan menjaga stabilitas harga di wilayah Istimewa Yogyakarta serta sekitarnya.</p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-item">
+                    <div class="stat-number">70+</div>
+                    <div class="stat-label">Tahun Pengabdian</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">34</div>
+                    <div class="stat-label">Provinsi Terjangkau</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">27.000+</div>
+                    <div class="stat-label">Mitra & RPK</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visi & Misi -->
+    <section class="visi-misi">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 20px;">
+                <div class="tagline"><i class="fas fa-bullseye"></i> Arahan Strategis</div>
+                <h3>Visi & <span>Misi</span> BULOG</h3>
+            </div>
+            <div class="vm-grid">
+                <div class="vm-card">
+                    <div class="icon"><i class="fas fa-eye"></i></div>
+                    <h4>Visi</h4>
+                    <p>Menjadi perusahaan logistik pangan yang terpercaya, andal, dan berkelas dunia dalam mendukung ketahanan pangan dan kesejahteraan masyarakat.</p>
+                </div>
+                <div class="vm-card">
+                    <div class="icon"><i class="fas fa-rocket"></i></div>
+                    <h4>Misi</h4>
+                    <ul>
+                        <li>Menjamin ketersediaan dan stabilisasi harga pangan pokok.</li>
+                        <li>Mengoptimalkan pengelolaan cadangan pangan nasional.</li>
+                        <li>Memperluas akses pangan berkualitas melalui inovasi produk (befood).</li>
+                        <li>Membangun ekosistem logistik yang efisien dan merata.</li>
+                        <li>Memberdayakan petani dan pelaku usaha lokal.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KANTOR WILAYAH YOGYAKARTA + OPEN STREET MAP -->
+    <section class="regional-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="tagline"><i class="fas fa-map-marker-alt"></i> Keberadaan Kami</div>
+                <h3>Kantor Wilayah <span>Yogyakarta</span></h3>
+                <p>Pusat kendali distribusi pangan untuk Daerah Istimewa Yogyakarta dan sekitarnya</p>
+            </div>
+            <div class="map-address-wrap">
+                <div class="map-container">
+                    <div id="officeMap" style="height: 100%; min-height: 420px; width: 100%;"></div>
+                </div>
+                <div class="address-info">
+                    <h4><i class="fas fa-building"></i> Perum BULOG Kanwil Yogyakarta</h4>
+                    <div class="address-detail">
+                        <p><i class="fas fa-location-dot"></i> <strong>Jl. Magelang KM 6, Sinduadi, Mlati, Sleman, Daerah Istimewa Yogyakarta 55284</strong></p>
+                        <p style="margin-top: 8px;"><i class="fas fa-phone-alt"></i> (0274) 623456 / 623457</p>
+                        <p><i class="fas fa-envelope"></i> kanwil.jogja@bulog.co.id</p>
+                    </div>
+                    <div class="office-contact">
+                        <p><i class="fas fa-clock"></i> Jam Operasional: Senin–Jumat, 08.00 – 16.00 WIB</p>
+                        <p><i class="fas fa-warehouse"></i> Melayani kebutuhan Cadangan Pangan Pemerintah, distribusi Beras SPHP, MinyaKita, serta program komersial di wilayah DIY.</p>
+                    </div>
+                    <button class="btn-directions" id="openMapDirection">
+                        <i class="fas fa-external-link-alt"></i> Buka Rute (OpenStreetMap)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tambahan informasi nilai -->
+    <section style="padding: 0 0 70px 0; background: white;">
+        <div class="container">
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+                <div style="background: var(--blue-light); border-radius: 28px; padding: 24px; text-align: center; flex: 1;">
+                    <i class="fas fa-hand-holding-heart" style="font-size: 2rem; color: var(--yellow-primary);"></i>
+                    <h4 style="margin: 12px 0;">Komitmen Kebaikan</h4>
+                    <p>Harga terjangkau, kualitas terjamin, distribusi tepat sasaran.</p>
+                </div>
+                <div style="background: var(--blue-light); border-radius: 28px; padding: 24px; text-align: center; flex: 1;">
+                    <i class="fas fa-chart-simple" style="font-size: 2rem; color: var(--yellow-primary);"></i>
+                    <h4 style="margin: 12px 0;">Stabilitas Ekonomi</h4>
+                    <p>Menjaga inflasi pangan dan daya beli masyarakat.</p>
+                </div>
+                <div style="background: var(--blue-light); border-radius: 28px; padding: 24px; text-align: center; flex: 1;">
+                    <i class="fas fa-leaf" style="font-size: 2rem; color: var(--yellow-primary);"></i>
+                    <h4 style="margin: 12px 0;">Berkelanjutan</h4>
+                    <p>Mitra petani dan rantai dingin ramah lingkungan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h5><i class="fas fa-warehouse"></i> Perum BULOG</h5>
+                <p>Mengantarkan kebaikan melalui ketahanan pangan dan distribusi merata untuk seluruh Indonesia.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h5>Bisnis Kami</h5>
+                <ul>
+                    <li><a href="#">Produk & Brand</a></li>
+                    <li><a href="#">Rumah Pangan Kita</a></li>
+                    <li><a href="#">Mitra Tani</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Layanan Publik</h5>
+                <ul>
+                    <li><a href="#">Informasi Harga Pangan</a></li>
+                    <li><a href="#">Cadangan Pangan</a></li>
+                    <li><a href="#">Pengaduan Masyarakat</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Kontak Kami</h5>
+                <ul>
+                    <li><i class="fas fa-phone-alt"></i> 021-5252209</li>
+                    <li><i class="fas fa-envelope"></i> bulog@bulog.co.id</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Jakarta Pusat</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 BULOG - Bersama Mengantarkan Kebaikan untuk Pangan Nusantara</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Leaflet JS & Inisialisasi Map OpenStreetMap -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+    // Mobile navigation toggle
+    const mobileBtn = document.getElementById('mobileToggle');
+    const navMenu = document.getElementById('mainNav');
+    if (mobileBtn) {
+        mobileBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+            const icon = mobileBtn.querySelector('i');
+            if (navMenu.classList.contains('open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+    // Tutup nav setelah klik link
+    document.querySelectorAll('.main-nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('open');
+            const icon = mobileBtn?.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    });
+
+    // Beranda link fallback (simulasi kembali ke landing page, bisa diarahkan ke beranda)
+    const homeLink = document.getElementById('homeLink');
+    if (homeLink) {
+        homeLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert("Halaman Beranda dapat diakses melalui menu utama (simulasi).\nPada implementasi sebenarnya, tautan akan mengarah ke index.html");
+            // optional: window.location.href = "index.html";
+        });
+    }
+
+    // ========== OPEN STREET MAP - KANTOR WILAYAH BULOG JOGJA ==========
+    // Koordinat BULOG Kanwil Yogyakarta (Jl. Magelang KM 6, Sinduadi, Sleman, Yogyakarta)
+    // Berdasarkan referensi: -7.74965, 110.37295 ( area sekitar Sinduadi, kantor bulog regional)
+    const bulogJogjaLat = -7.74935;
+    const bulogJogjaLon = 110.37320;
+    
+    // Inisialisasi map ketika DOM ready
+    document.addEventListener('DOMContentLoaded', function () {
+        const mapElement = document.getElementById('officeMap');
+        if (mapElement) {
+            const map = L.map('officeMap').setView([bulogJogjaLat, bulogJogjaLon], 16);
+            // OpenStreetMap tiles
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 19,
+                minZoom: 12
+            }).addTo(map);
+            
+            // Marker khusus dengan icon default (bisa custom)
+            const marker = L.marker([bulogJogjaLat, bulogJogjaLon]).addTo(map);
+            marker.bindPopup(`
+                <b>Perum BULOG Kanwil Yogyakarta</b><br>
+                Jl. Magelang KM 6, Sinduadi, Sleman<br>
+                Telp: (0274) 623456<br>
+                <i>Mengantarkan kebaikan untuk DIY</i>
+            `).openPopup();
+            
+            // Optional: tambahkan lingkaran area 
+            L.circle([bulogJogjaLat, bulogJogjaLon], {
+                color: '#F5B042',
+                weight: 2,
+                fillColor: '#0A4B7A',
+                fillOpacity: 0.08,
+                radius: 250
+            }).addTo(map);
+        }
+    });
+    
+    // Tombol buka rute (mengarahkan ke OpenStreetMap direction dengan koordinat tujuan)
+    const directionBtn = document.getElementById('openMapDirection');
+    if (directionBtn) {
+        directionBtn.addEventListener('click', () => {
+            const destLat = bulogJogjaLat;
+            const destLon = bulogJogjaLon;
+            const url = `https://www.openstreetmap.org/directions?engine=graphhopper_foot&route=&to=${destLat}%2C${destLon}`;
+            window.open(url, '_blank');
+        });
+    }
+
+    // Untuk tombol lain yang membutuhkan interaksi (cth: product details tidak ada pada halaman ini, tidak memunculkan error)
+    const anyProductBtns = document.querySelectorAll('.btn-product');
+    if (anyProductBtns.length) {
+        anyProductBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                alert('Fitur produk tersedia di halaman Beranda.');
+            });
+        });
+    }
+</script>
+</body>
+</html>
+```
