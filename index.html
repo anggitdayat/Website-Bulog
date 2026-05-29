@@ -236,7 +236,6 @@
             object-fit: contain;
             display: block;
             margin: 0 auto;
-            transition: 0.2s;
         }
         .card-content {
             padding: 24px 22px 28px;
@@ -382,7 +381,7 @@
             font-size: 0.75rem;
         }
 
-        /* ========== MODAL POPUP ========== */
+        /* ========== MODAL ========== */
         .modal {
             display: none;
             position: fixed;
@@ -494,20 +493,12 @@
             align-items: center;
             gap: 8px;
         }
+
         @media (max-width: 720px) {
             .modal-content {
                 flex-direction: column;
                 max-width: 95%;
                 margin: 20px auto;
-            }
-            .modal-img {
-                padding: 24px;
-            }
-            .modal-info {
-                padding: 24px;
-            }
-            .modal-info h2 {
-                font-size: 1.6rem;
             }
             .mobile-toggle {
                 display: block;
@@ -564,13 +555,14 @@
         <nav class="main-nav" id="mainNav">
             <ul>
                 <li><a href="#" class="active">Beranda</a></li>
-                <li><a href="#">Tentang Kami</a></li>
-                <li><a href="#">Bisnis</a></li>
-                <li><a href="#">Pelayanan Publik</a></li>
-                <li><a href="#">Berita & Informasi</a></li>
-                <li><a href="#">Karir</a></li>
-                <li><a href="#">Kontak</a></li>
-                <li><a href="#">Keterbukaan Informasi</a></li>
+                <!-- Tentang Kami mengarah ke file about.html -->
+                <li><a href="tentang.html">Tentang Kami</a></li>
+                <!-- Menu Bisnis dihapus -->
+                <li><a href="#" class="menu-dev">Pelayanan Publik</a></li>
+                <li><a href="#" class="menu-dev">Berita & Informasi</a></li>
+                <li><a href="#" class="menu-dev">Karir</a></li>
+                <li><a href="#" class="menu-dev">Kontak</a></li>
+                <li><a href="#" class="menu-dev">Keterbukaan Informasi</a></li>
             </ul>
         </nav>
     </div>
@@ -829,6 +821,15 @@
         });
     }
 
+    // Menu development alert (untuk menu selain Beranda dan Tentang Kami)
+    const devMenus = document.querySelectorAll('.menu-dev');
+    devMenus.forEach(menu => {
+        menu.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Halaman sedang dalam pengembangan. Segera hadir!');
+        });
+    });
+
     // Modal logic
     const modal = document.getElementById('productModal');
     const modalImage = document.getElementById('modalImage');
@@ -881,7 +882,7 @@
         });
     });
 
-    // Tombol beli di modal (contoh)
+    // Tombol beli di modal
     const modalBuyBtn = document.getElementById('modalBuyBtn');
     if(modalBuyBtn) {
         modalBuyBtn.addEventListener('click', () => {

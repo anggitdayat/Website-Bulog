@@ -1,5 +1,3 @@
-Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenStreetMap showing the location of the Yogyakarta regional office.
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -42,7 +40,7 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
             padding: 0 24px;
         }
 
-        /* ========== HEADER (sama seperti asli) ========== */
+        /* ========== HEADER ========== */
         .top-banner {
             background: var(--blue-primary);
             color: white;
@@ -75,39 +73,10 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
             gap: 20px;
         }
 
-        .logo-area {
-            display: flex;
-            align-items: baseline;
-            gap: 8px;
-        }
-        .logo-icon {
-            background: var(--blue-primary);
-            color: var(--yellow-primary);
-            width: 42px;
-            height: 42px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            font-weight: 800;
-            box-shadow: 0 6px 12px rgba(10,75,122,0.2);
-        }
-        .logo-text h2 {
-            font-size: 1.7rem;
-            font-weight: 800;
-            color: var(--blue-primary);
-            line-height: 1.2;
-            letter-spacing: -0.3px;
-        }
-        .logo-text span {
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: var(--yellow-primary);
-            background: var(--blue-primary);
-            padding: 2px 10px;
-            border-radius: 30px;
-            display: inline-block;
+        .logo-area img {
+            height: 55px;
+            width: auto;
+            display: block;
         }
 
         .main-nav ul {
@@ -134,14 +103,33 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
             color: var(--blue-primary);
         }
 
-        /* ========== TENTANG KAMI CUSTOM STYLES ========== */
+        /* ========== HERO TENTANG KAMI ========== */
         .about-hero {
-            background: linear-gradient(115deg, #EFF6FF 0%, #FFFFFF 100%);
-            padding: 48px 0 56px;
-            border-bottom: 1px solid rgba(245,176,66,0.2);
+            position: relative;
+            background-image: url('9.png');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            padding: 70px 0;
+            border-bottom: 1px solid rgba(245,176,66,0.3);
+        }
+        .about-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 1;
+        }
+        .about-hero .container {
+            position: relative;
+            z-index: 2;
         }
         .page-title {
             text-align: center;
+            color: white;
         }
         .page-title .badge {
             background: var(--yellow-soft);
@@ -156,18 +144,21 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
         .page-title h1 {
             font-size: 2.8rem;
             font-weight: 800;
-            color: #0f172a;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
         .page-title h1 span {
-            color: var(--blue-primary);
+            color: var(--yellow-primary);
         }
         .page-title p {
             max-width: 650px;
             margin: 16px auto 0;
-            color: var(--gray-text);
+            color: #fefefe;
             font-size: 1rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
 
+        /* ========== INTRO & STATISTIK ========== */
         .about-intro {
             padding: 64px 0 40px;
         }
@@ -191,15 +182,34 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
             color: var(--gray-text);
             line-height: 1.6;
         }
+
+        /* Card statistik dengan background gambar */
         .about-stats {
             flex: 0.8;
-            background: var(--blue-light);
             border-radius: 32px;
             padding: 32px 24px;
             text-align: center;
+            position: relative;
+            background-image: url('10.png');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .about-stats::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(165, 165, 165, 0.85);
+            z-index: -1;
         }
         .stat-item {
             margin-bottom: 28px;
+            position: relative;
+            z-index: 1;
         }
         .stat-number {
             font-size: 2.2rem;
@@ -212,6 +222,7 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
             color: #2c3e50;
         }
 
+        /* ========== VISI & MISI - SATU GAMBAR UNTUK DUA CARD ========== */
         .visi-misi {
             background: var(--gray-light);
             padding: 64px 0;
@@ -221,14 +232,26 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
             flex-wrap: wrap;
             gap: 32px;
             margin-top: 32px;
+            /* SATU GAMBAR BACKGROUND UNTUK KEDUA CARD */
+            background-image: url('11.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 32px;
+            padding: 32px;
         }
         .vm-card {
-            background: white;
-            border-radius: 28px;
-            padding: 32px;
             flex: 1;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.02);
-            border: 1px solid #eef2ff;
+            border-radius: 24px;
+            padding: 32px;
+            /* Background putih transparan agar gambar latar terlihat di belakang */
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(0px);
+            transition: 0.2s;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+        .vm-card:hover {
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-4px);
         }
         .vm-card .icon {
             font-size: 2.8rem;
@@ -239,6 +262,7 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
             font-size: 1.6rem;
             font-weight: 700;
             margin-bottom: 16px;
+            color: var(--blue-primary);
         }
         .vm-card p, .vm-card ul {
             color: var(--gray-text);
@@ -250,7 +274,7 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
             margin: 8px 0;
         }
 
-        /* Section Kantor Wilayah + MAP */
+        /* ========== KANTOR WILAYAH & MAP ========== */
         .regional-section {
             padding: 70px 0;
             background: white;
@@ -349,7 +373,7 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
             transform: translateY(-2px);
         }
 
-        /* Footer */
+        /* ========== FOOTER ========== */
         .footer {
             background: #0B2B40;
             color: #cbd5e6;
@@ -408,6 +432,7 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
             font-size: 0.75rem;
         }
 
+        /* Responsif */
         @media (max-width: 850px) {
             .page-title h1 {
                 font-size: 2rem;
@@ -420,6 +445,11 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
             }
             .map-container, #officeMap {
                 min-height: 350px;
+            }
+            .vm-grid {
+                flex-direction: column;
+                padding: 24px;
+                gap: 24px;
             }
         }
         @media (max-width: 720px) {
@@ -445,9 +475,6 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
                 flex-direction: column;
                 gap: 24px;
             }
-            .vm-grid {
-                flex-direction: column;
-            }
         }
     </style>
 </head>
@@ -462,18 +489,14 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
 <header class="site-header">
     <div class="container header-inner">
         <div class="logo-area">
-            <div class="logo-icon">B</div>
-            <div class="logo-text">
-                <h2>BULOG</h2>
-                <span>mengantarkan kebaikan</span>
-            </div>
+            <img src="logo bulog.png" alt="Logo BULOG">
         </div>
         <div class="mobile-toggle" id="mobileToggle">
             <i class="fas fa-bars"></i>
         </div>
         <nav class="main-nav" id="mainNav">
             <ul>
-                <li><a href="#" id="homeLink">Beranda</a></li>
+                <li><a href="index.html">Beranda</a></li>
                 <li><a href="#" class="active">Tentang Kami</a></li>
                 <li><a href="#">Bisnis</a></li>
                 <li><a href="#">Pelayanan Publik</a></li>
@@ -487,7 +510,7 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
 </header>
 
 <main>
-    <!-- Hero Halaman Tentang Kami -->
+    <!-- Hero -->
     <section class="about-hero">
         <div class="container page-title">
             <div class="badge"><i class="fas fa-landmark"></i> Profil Perusahaan</div>
@@ -496,13 +519,13 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
         </div>
     </section>
 
-    <!-- Intro & Sejarah singkat -->
+    <!-- Intro & Statistik -->
     <section class="about-intro">
         <div class="container two-columns">
             <div class="about-text">
                 <h3>Siapa BULOG?</h3>
                 <p>Perum BULOG (Badan Urusan Logistik) didirikan pada tahun 1967 sebagai wujud komitmen pemerintah dalam menjaga kedaulatan pangan. Dengan tugas utama mengelola cadangan pangan, stabilisasi harga, dan distribusi beras serta komoditas strategis, BULOG hadir di 34 provinsi dan ribuan kecamatan.</p>
-                <p>Melayanai lebih dari 270 juta masyarakat, BULOG tak hanya mengelola beras, tetapi juga gula, minyak goreng, tepung, serta produk inovatif befood yang menjawab kebutuhan pangan praktis & bergizi. Misi “Mengantarkan Kebaikan” menjadi fondasi setiap langkah kami.</p>
+                <p>Melayani lebih dari 270 juta masyarakat, BULOG tak hanya mengelola beras, tetapi juga gula, minyak goreng, tepung, serta produk inovatif befood yang menjawab kebutuhan pangan praktis & bergizi. Misi “Mengantarkan Kebaikan” menjadi fondasi setiap langkah kami.</p>
                 <p>Kantor Wilayah Yogyakarta (DIY) menjadi simpul strategis dalam mendistribusikan bahan pokok dan menjaga stabilitas harga di wilayah Istimewa Yogyakarta serta sekitarnya.</p>
             </div>
             <div class="about-stats">
@@ -522,7 +545,7 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
         </div>
     </section>
 
-    <!-- Visi & Misi -->
+    <!-- Visi & Misi: SATU GAMBAR UTUH DI BELAKANG -->
     <section class="visi-misi">
         <div class="container">
             <div class="section-header" style="margin-bottom: 20px;">
@@ -550,7 +573,7 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
         </div>
     </section>
 
-    <!-- KANTOR WILAYAH YOGYAKARTA + OPEN STREET MAP -->
+    <!-- Kantor Wilayah Yogyakarta + Map -->
     <section class="regional-section">
         <div class="container">
             <div class="section-header">
@@ -581,7 +604,7 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
         </div>
     </section>
 
-    <!-- Tambahan informasi nilai -->
+    <!-- Nilai tambahan -->
     <section style="padding: 0 0 70px 0; background: white;">
         <div class="container">
             <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
@@ -648,7 +671,7 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
     </div>
 </footer>
 
-<!-- Leaflet JS & Inisialisasi Map OpenStreetMap -->
+<!-- Leaflet JS & Map -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
     // Mobile navigation toggle
@@ -667,7 +690,6 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
             }
         });
     }
-    // Tutup nav setelah klik link
     document.querySelectorAll('.main-nav a').forEach(link => {
         link.addEventListener('click', () => {
             navMenu.classList.remove('open');
@@ -679,28 +701,14 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
         });
     });
 
-    // Beranda link fallback (simulasi kembali ke landing page, bisa diarahkan ke beranda)
-    const homeLink = document.getElementById('homeLink');
-    if (homeLink) {
-        homeLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert("Halaman Beranda dapat diakses melalui menu utama (simulasi).\nPada implementasi sebenarnya, tautan akan mengarah ke index.html");
-            // optional: window.location.href = "index.html";
-        });
-    }
-
-    // ========== OPEN STREET MAP - KANTOR WILAYAH BULOG JOGJA ==========
-    // Koordinat BULOG Kanwil Yogyakarta (Jl. Magelang KM 6, Sinduadi, Sleman, Yogyakarta)
-    // Berdasarkan referensi: -7.74965, 110.37295 ( area sekitar Sinduadi, kantor bulog regional)
+    // Map OpenStreetMap - Kantor Wilayah Yogyakarta
     const bulogJogjaLat = -7.74935;
     const bulogJogjaLon = 110.37320;
     
-    // Inisialisasi map ketika DOM ready
     document.addEventListener('DOMContentLoaded', function () {
         const mapElement = document.getElementById('officeMap');
         if (mapElement) {
             const map = L.map('officeMap').setView([bulogJogjaLat, bulogJogjaLon], 16);
-            // OpenStreetMap tiles
             L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
                 subdomains: 'abcd',
@@ -708,7 +716,6 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
                 minZoom: 12
             }).addTo(map);
             
-            // Marker khusus dengan icon default (bisa custom)
             const marker = L.marker([bulogJogjaLat, bulogJogjaLon]).addTo(map);
             marker.bindPopup(`
                 <b>Perum BULOG Kanwil Yogyakarta</b><br>
@@ -717,7 +724,6 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
                 <i>Mengantarkan kebaikan untuk DIY</i>
             `).openPopup();
             
-            // Optional: tambahkan lingkaran area 
             L.circle([bulogJogjaLat, bulogJogjaLon], {
                 color: '#F5B042',
                 weight: 2,
@@ -728,27 +734,13 @@ Here is a complete "Tentang Kami" page for BULOG, featuring an interactive OpenS
         }
     });
     
-    // Tombol buka rute (mengarahkan ke OpenStreetMap direction dengan koordinat tujuan)
     const directionBtn = document.getElementById('openMapDirection');
     if (directionBtn) {
         directionBtn.addEventListener('click', () => {
-            const destLat = bulogJogjaLat;
-            const destLon = bulogJogjaLon;
-            const url = `https://www.openstreetmap.org/directions?engine=graphhopper_foot&route=&to=${destLat}%2C${destLon}`;
+            const url = `https://www.openstreetmap.org/directions?engine=graphhopper_foot&route=&to=${bulogJogjaLat}%2C${bulogJogjaLon}`;
             window.open(url, '_blank');
         });
-    }
-
-    // Untuk tombol lain yang membutuhkan interaksi (cth: product details tidak ada pada halaman ini, tidak memunculkan error)
-    const anyProductBtns = document.querySelectorAll('.btn-product');
-    if (anyProductBtns.length) {
-        anyProductBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                alert('Fitur produk tersedia di halaman Beranda.');
-            });
-        });
-    }
+    } 
 </script>
 </body>
 </html>
-```
