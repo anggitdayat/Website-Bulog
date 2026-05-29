@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>BULOG | Pelayanan Publik - Mengantarkan Kebaikan</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: #1e293b;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --blue-primary: #0A4B7A;
+            --blue-light: #EFF6FF;
+            --yellow-primary: #F5B042;
+            --yellow-soft: #FEF3C7;
+            --white: #ffffff;
+            --gray-text: #334155;
+            --gray-light: #f8fafc;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== HEADER ========== */
+        .top-banner {
+            background: var(--blue-primary);
+            color: white;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+        .top-banner i {
+            margin-right: 6px;
+            color: var(--yellow-primary);
+        }
+
+        .site-header {
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #eef2ff;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 16px 0;
+            gap: 20px;
+        }
+
+        .logo-area img {
+            height: 55px;
+            width: auto;
+            display: block;
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        .main-nav a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #1e293b;
+            transition: 0.2s;
+        }
+        .main-nav a:hover, .main-nav a.active {
+            color: var(--blue-primary);
+            border-bottom: 2px solid var(--yellow-primary);
+            padding-bottom: 4px;
+        }
+        .mobile-toggle {
+            display: none;
+            font-size: 1.7rem;
+            cursor: pointer;
+            color: var(--blue-primary);
+        }
+
+        /* ========== HERO PELAYANAN PUBLIK ========== */
+        .services-hero {
+            background: linear-gradient(115deg, #EFF6FF 0%, #FFFFFF 100%);
+            padding: 48px 0 56px;
+            border-bottom: 1px solid rgba(245,176,66,0.2);
+        }
+        .page-title {
+            text-align: center;
+        }
+        .page-title .badge {
+            background: var(--yellow-soft);
+            color: var(--blue-primary);
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+        }
+        .page-title h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+        .page-title h1 span {
+            color: var(--blue-primary);
+        }
+        .page-title p {
+            max-width: 700px;
+            margin: 16px auto 0;
+            color: var(--gray-text);
+            font-size: 1rem;
+        }
+
+        /* ========== LAYANAN UTAMA ========== */
+        .services-section {
+            padding: 70px 0;
+            background: white;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .section-header .tagline {
+            background: var(--yellow-soft);
+            color: var(--blue-primary);
+            display: inline-block;
+            padding: 4px 20px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .section-header h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-top: 12px;
+            color: #0f172a;
+        }
+        .section-header h3 span {
+            color: var(--blue-primary);
+        }
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 32px;
+        }
+        .service-card {
+            background: var(--white);
+            border-radius: 28px;
+            padding: 32px 28px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+            border: 1px solid #f0f4f9;
+            text-align: center;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+            border-color: var(--yellow-primary);
+        }
+        .service-icon {
+            background: var(--blue-light);
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 60px;
+            font-size: 2.2rem;
+            color: var(--blue-primary);
+            transition: 0.2s;
+        }
+        .service-card:hover .service-icon {
+            background: var(--yellow-soft);
+            color: var(--yellow-primary);
+        }
+        .service-card h4 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .service-card p {
+            color: var(--gray-text);
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .btn-service {
+            background: transparent;
+            border: 1.5px solid var(--blue-primary);
+            color: var(--blue-primary);
+            padding: 8px 24px;
+            border-radius: 48px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-service:hover {
+            background: var(--blue-primary);
+            color: white;
+            border-color: var(--blue-primary);
+        }
+
+        /* ========== INFORMASI PENTING ========== */
+        .info-section {
+            background: var(--blue-light);
+            padding: 70px 0;
+        }
+        .info-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .info-card {
+            background: white;
+            border-radius: 24px;
+            padding: 28px;
+            flex: 1;
+            min-width: 240px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+            border: 1px solid #eef2ff;
+        }
+        .info-card i {
+            font-size: 2rem;
+            color: var(--yellow-primary);
+            margin-bottom: 16px;
+        }
+        .info-card h5 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .info-card p {
+            color: var(--gray-text);
+            font-size: 0.85rem;
+        }
+
+        /* ========== KONTAK PENGADUAN ========== */
+        .contact-layanan {
+            padding: 70px 0;
+            background: white;
+        }
+        .contact-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            background: #fefdf8;
+            border-radius: 40px;
+            overflow: hidden;
+            border: 1px solid #f0e7d6;
+        }
+        .contact-form {
+            flex: 1;
+            padding: 40px 32px;
+            background: white;
+        }
+        .contact-form h4 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--blue-primary);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #e2e8f0;
+            border-radius: 28px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--yellow-primary);
+            box-shadow: 0 0 0 3px rgba(245,176,66,0.2);
+        }
+        .btn-submit {
+            background: var(--blue-primary);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 48px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+        }
+        .btn-submit:hover {
+            background: #063a5c;
+            transform: translateY(-2px);
+        }
+        .contact-info {
+            flex: 0.8;
+            padding: 40px 32px;
+            background: var(--blue-primary);
+            color: white;
+            border-radius: 0 40px 40px 0;
+        }
+        .contact-info h4 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            color: var(--yellow-primary);
+        }
+        .contact-info p {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .contact-info i {
+            width: 28px;
+            font-size: 1.2rem;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: #0B2B40;
+            color: #cbd5e6;
+            padding: 48px 0 28px;
+        }
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col p {
+            margin-top: 14px;
+            max-width: 280px;
+            font-size: 0.85rem;
+        }
+        .footer-col h5 {
+            color: var(--yellow-primary);
+            margin-bottom: 18px;
+            font-size: 1.1rem;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+        .footer-col a {
+            color: #cbd5e6;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .footer-col a:hover {
+            color: var(--yellow-primary);
+        }
+        .social-icons {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .social-icons a {
+            background: #1e3a5f;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .copyright {
+            border-top: 1px solid #1e3a5f;
+            padding-top: 28px;
+            text-align: center;
+            font-size: 0.75rem;
+        }
+
+        @media (max-width: 850px) {
+            .page-title h1 {
+                font-size: 2rem;
+            }
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-wrap {
+                flex-direction: column;
+            }
+            .contact-info {
+                border-radius: 0 0 40px 40px;
+            }
+        }
+        @media (max-width: 720px) {
+            .mobile-toggle {
+                display: block;
+            }
+            .main-nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                background: white;
+                width: 75%;
+                height: 100%;
+                box-shadow: 6px 0 20px rgba(0,0,0,0.15);
+                transition: 0.3s;
+                z-index: 200;
+                padding: 100px 28px 28px;
+            }
+            .main-nav.open {
+                left: 0;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                gap: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-banner">
+    <div class="container">
+        <i class="fas fa-truck-fast"></i> Mengantarkan kebaikan untuk Indonesia | Distribusi pangan merata & berkualitas
+    </div>
+</div>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <div class="logo-area">
+            <img src="logo bulog.png" alt="Logo BULOG">
+        </div>
+        <div class="mobile-toggle" id="mobileToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav class="main-nav" id="mainNav">
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="about.html">Tentang Kami</a></li>
+                <li><a href="#">Bisnis</a></li>
+                <li><a href="#" class="active">Pelayanan Publik</a></li>
+                <li><a href="#">Berita & Informasi</a></li>
+                <li><a href="#">Karir</a></li>
+                <li><a href="#">Kontak</a></li>
+                <li><a href="#">Keterbukaan Informasi</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- Hero -->
+    <section class="services-hero">
+        <div class="container page-title">
+            <div class="badge"><i class="fas fa-hand-holding-heart"></i> Untuk Masyarakat</div>
+            <h1>Layanan <span>Publik</span> BULOG</h1>
+            <p>Kami hadir melayani kebutuhan informasi pangan, pengaduan, dan program ketahanan pangan untuk seluruh rakyat Indonesia.</p>
+        </div>
+    </section>
+
+    <!-- Layanan Utama -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="tagline"><i class="fas fa-star"></i> Akses Mudah</div>
+                <h3>Layanan <span>Informasi & Pengaduan</span></h3>
+                <p>Transparan, cepat, dan terpercaya</p>
+            </div>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                    <h4>Informasi Harga Pangan</h4>
+                    <p>Pantau harga beras, gula, minyak goreng, dan komoditas lainnya secara real-time di seluruh Indonesia.</p>
+                    <button class="btn-service" onclick="alert('Fitur informasi harga akan segera hadir.')">Cek Harga <i class="fas fa-arrow-right"></i></button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-warehouse"></i></div>
+                    <h4>Cadangan Pangan Nasional</h4>
+                    <p>Informasi stok beras dan komoditas strategis, lokasi gudang BULOG, serta program operasi pasar.</p>
+                    <button class="btn-service" onclick="alert('Data cadangan pangan dapat diakses melalui kantor wilayah terdekat.')">Selengkapnya <i class="fas fa-arrow-right"></i></button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+                    <h4>Pengaduan Masyarakat</h4>
+                    <p>Sampaikan keluhan, saran, atau laporan terkait distribusi, harga, dan pelayanan BULOG.</p>
+                    <button class="btn-service" onclick="document.getElementById('pengaduanForm').scrollIntoView({ behavior: 'smooth' });">Laporkan <i class="fas fa-arrow-right"></i></button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-store"></i></div>
+                    <h4>Rumah Pangan Kita</h4>
+                    <p>Temukan lokasi mitra RPK terdekat untuk mendapatkan bahan pokok dengan harga terjangkau.</p>
+                    <button class="btn-service" onclick="alert('Fitur cari lokasi RPK segera hadir.')">Cari Lokasi <i class="fas fa-arrow-right"></i></button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-chalkboard-user"></i></div>
+                    <h4>Edukasi Pangan</h4>
+                    <p>Artikel dan tips ketahanan pangan, gizi keluarga, serta cara memanfaatkan produk BULOG.</p>
+                    <button class="btn-service" onclick="alert('Konten edukasi akan segera tersedia.')">Baca Artikel <i class="fas fa-arrow-right"></i></button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-handshake"></i></div>
+                    <h4>Mitra & Kerjasama</h4>
+                    <p>Informasi pendaftaran mitra distributor, petani, dan program kemitraan BULOG.</p>
+                    <button class="btn-service" onclick="alert('Pendaftaran mitra dapat menghubungi kantor wilayah setempat.')">Daftar Mitra <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Informasi Penting -->
+    <section class="info-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="tagline"><i class="fas fa-bell"></i> Yang Perlu Diketahui</div>
+                <h3>Informasi <span>Penting</span> Publik</h3>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-ticket-alt"></i>
+                    <h5>Program SPHP</h5>
+                    <p>Stabilisasi Pasokan dan Harga Pangan – beras medium dengan harga terjangkau tersedia di mitra RPK.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-oil-can"></i>
+                    <h5>Minyakita</h5>
+                    <p>Minyak goreng kemasan sederhana dengan harga Rp14.000/liter, tersedia di seluruh Indonesia.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-charging-station"></i>
+                    <h5>Bantuan Pangan</h5>
+                    <p>Program bantuan pangan non tunai (BPNT) dan cadangan beras pemerintah untuk masyarakat rentan.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-phone-volume"></i>
+                    <h5>Call Center 24 Jam</h5>
+                    <p>Layanan pengaduan dan informasi: 0800-1-BULOG (0800-128564) atau (021) 5252209.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Pengaduan Masyarakat -->
+    <section class="contact-layanan" id="pengaduanForm">
+        <div class="container">
+            <div class="contact-wrap">
+                <div class="contact-form">
+                    <h4><i class="fas fa-pen-alt"></i> Form Pengaduan & Saran</h4>
+                    <form id="complaintForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Nama Lengkap" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Nomor Telepon / WA">
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="">Jenis Layanan</option>
+                                <option>Pengaduan Harga Pangan</option>
+                                <option>Keluhan Distribusi</option>
+                                <option>Saran untuk BULOG</option>
+                                <option>Laporan Ketersediaan Stok</option>
+                                <option>Lainnya</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="4" placeholder="Tulis pesan atau pengaduan Anda..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Kirim Pengaduan <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h4><i class="fas fa-headset"></i> Hubungi Kami</h4>
+                    <p><i class="fas fa-phone-alt"></i> 021-5252209 (Pusat)</p>
+                    <p><i class="fas fa-envelope"></i> pengaduan@bulog.co.id</p>
+                    <p><i class="fab fa-whatsapp"></i> 0811-1234-567 (WA Pengaduan)</p>
+                    <p><i class="fas fa-clock"></i> Senin–Jumat, 08.00–16.00 WIB</p>
+                    <p><i class="fas fa-building"></i> Kantor Pusat: Jl. Gajah Mada No.8, Jakarta Pusat</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h5><i class="fas fa-warehouse"></i> Perum BULOG</h5>
+                <p>Mengantarkan kebaikan melalui ketahanan pangan dan distribusi merata untuk seluruh Indonesia.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h5>Bisnis Kami</h5>
+                <ul>
+                    <li><a href="#">Produk & Brand</a></li>
+                    <li><a href="#">Rumah Pangan Kita</a></li>
+                    <li><a href="#">Mitra Tani</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Layanan Publik</h5>
+                <ul>
+                    <li><a href="#">Informasi Harga Pangan</a></li>
+                    <li><a href="#">Cadangan Pangan</a></li>
+                    <li><a href="#">Pengaduan Masyarakat</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Kontak Kami</h5>
+                <ul>
+                    <li><i class="fas fa-phone-alt"></i> 021-5252209</li>
+                    <li><i class="fas fa-envelope"></i> bulog@bulog.co.id</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Jakarta Pusat</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 BULOG - Bersama Mengantarkan Kebaikan untuk Pangan Nusantara</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile navigation toggle
+    const mobileBtn = document.getElementById('mobileToggle');
+    const navMenu = document.getElementById('mainNav');
+    if (mobileBtn) {
+        mobileBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+            const icon = mobileBtn.querySelector('i');
+            if (navMenu.classList.contains('open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+    document.querySelectorAll('.main-nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('open');
+            const icon = mobileBtn?.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    });
+
+    // Form pengaduan sederhana (simulasi)
+    const form = document.getElementById('complaintForm');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Terima kasih, pengaduan Anda telah kami terima. Petugas akan merespon dalam 2x24 jam.');
+            form.reset();
+        });
+    }
+</script>
+</body>
+</html>
