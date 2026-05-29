@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>BULOG | Berita & Informasi - Mengantarkan Kebaikan</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: #1e293b;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --blue-primary: #0A4B7A;
+            --blue-light: #EFF6FF;
+            --yellow-primary: #F5B042;
+            --yellow-soft: #FEF3C7;
+            --white: #ffffff;
+            --gray-text: #334155;
+            --gray-light: #f8fafc;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== HEADER ========== */
+        .top-banner {
+            background: var(--blue-primary);
+            color: white;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+        .top-banner i {
+            margin-right: 6px;
+            color: var(--yellow-primary);
+        }
+
+        .site-header {
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #eef2ff;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 16px 0;
+            gap: 20px;
+        }
+
+        .logo-area img {
+            height: 55px;
+            width: auto;
+            display: block;
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        .main-nav a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #1e293b;
+            transition: 0.2s;
+        }
+        .main-nav a:hover, .main-nav a.active {
+            color: var(--blue-primary);
+            border-bottom: 2px solid var(--yellow-primary);
+            padding-bottom: 4px;
+        }
+        .mobile-toggle {
+            display: none;
+            font-size: 1.7rem;
+            cursor: pointer;
+            color: var(--blue-primary);
+        }
+
+        /* ========== HERO ========== */
+        .news-hero {
+            background: linear-gradient(115deg, #EFF6FF 0%, #FFFFFF 100%);
+            padding: 48px 0 56px;
+            border-bottom: 1px solid rgba(245,176,66,0.2);
+        }
+        .page-title {
+            text-align: center;
+        }
+        .page-title .badge {
+            background: var(--yellow-soft);
+            color: var(--blue-primary);
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+        }
+        .page-title h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+        .page-title h1 span {
+            color: var(--blue-primary);
+        }
+        .page-title p {
+            max-width: 700px;
+            margin: 16px auto 0;
+            color: var(--gray-text);
+            font-size: 1rem;
+        }
+
+        /* ========== LAYOUT DUA KOLOM ========== */
+        .news-layout {
+            padding: 60px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px;
+        }
+        .berita-section {
+            flex: 2;
+            min-width: 280px;
+        }
+        .agenda-section {
+            flex: 1.2;
+            min-width: 320px;
+        }
+
+        /* Berita & Artikel */
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 28px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--yellow-primary);
+            display: inline-block;
+        }
+        .news-card {
+            display: flex;
+            gap: 20px;
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid #eef2ff;
+            transition: 0.2s;
+        }
+        .news-card:hover {
+            transform: translateX(6px);
+            border-color: var(--yellow-soft);
+        }
+        .news-img {
+            flex-shrink: 0;
+            width: 120px;
+            height: 120px;
+            background: var(--blue-light);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--blue-primary);
+        }
+        .news-content h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .news-date {
+            font-size: 0.7rem;
+            color: #6c757d;
+            margin-bottom: 8px;
+            display: flex;
+            gap: 12px;
+        }
+        .news-excerpt {
+            color: var(--gray-text);
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+        .read-more {
+            color: var(--blue-primary);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+
+        /* ========== KALENDER ELEGAN & RAPI ========== */
+        .agenda-card {
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+            border: 1px solid #f0f4f9;
+            overflow: hidden;
+            margin-bottom: 32px;
+        }
+        .calendar-header {
+            background: var(--blue-primary);
+            color: white;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .calendar-header h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .calendar-nav {
+            display: flex;
+            gap: 12px;
+        }
+        .calendar-nav button {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .calendar-nav button:hover {
+            background: var(--yellow-primary);
+            color: var(--blue-primary);
+        }
+
+        /* Grid kalender - ukuran seragam */
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            background: var(--blue-light);
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 12px 0;
+            color: var(--blue-primary);
+            border-bottom: 1px solid #e0e7f0;
+        }
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            background: white;
+        }
+        .calendar-day {
+            aspect-ratio: 1 / 1;  /* Membuat sel berbentuk persegi sempurna */
+            min-width: 0;          /* Mencegah overflow */
+            padding: 6px 4px;
+            border-bottom: 1px solid #f0f0f0;
+            border-right: 1px solid #f0f0f0;
+            font-size: 0.85rem;
+            font-weight: 500;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .calendar-day:hover {
+            background: var(--yellow-soft);
+            transform: scale(0.98);
+            z-index: 2;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .calendar-day.today {
+            background: var(--yellow-soft);
+            font-weight: 800;
+            border: 1px solid var(--yellow-primary);
+        }
+        .calendar-day.other-month {
+            color: #bbb;
+            background: #fefefe;
+        }
+        .day-number {
+            font-weight: 600;
+            margin-bottom: 4px;
+            font-size: 0.9rem;
+        }
+        /* Badge event kompak */
+        .event-badge {
+            font-size: 0.6rem;
+            border-radius: 20px;
+            padding: 2px 6px;
+            margin-top: 2px;
+            width: 90%;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: white;
+            font-weight: 500;
+        }
+        .event-badge.operasi {
+            background: #2ecc71;
+        }
+        .event-badge.bantuan {
+            background: #e67e22;
+        }
+        .event-badge.agenda {
+            background: #3498db;
+        }
+        /* event list di bawah kalender */
+        .event-list {
+            padding: 20px;
+            border-top: 1px solid #eef2ff;
+            background: #fefefa;
+        }
+        .event-list h4 {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            color: var(--blue-primary);
+        }
+        .event-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 0.8rem;
+            align-items: flex-start;
+            padding: 8px;
+            border-radius: 16px;
+            background: white;
+            transition: 0.1s;
+        }
+        .event-item:hover {
+            background: var(--blue-light);
+        }
+        .event-date {
+            background: var(--yellow-soft);
+            border-radius: 20px;
+            padding: 2px 10px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            white-space: nowrap;
+        }
+        .event-desc strong {
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        /* Sidebar kategori */
+        .info-sidebar {
+            background: var(--gray-light);
+            border-radius: 28px;
+            padding: 24px;
+            margin-top: 24px;
+        }
+        .info-sidebar h4 {
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+        }
+        .category-list {
+            list-style: none;
+        }
+        .category-list li {
+            margin-bottom: 10px;
+        }
+        .category-list a {
+            text-decoration: none;
+            color: var(--gray-text);
+            transition: 0.2s;
+        }
+        .category-list a:hover {
+            color: var(--blue-primary);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0B2B40;
+            color: #cbd5e6;
+            padding: 48px 0 28px;
+        }
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col p {
+            margin-top: 14px;
+            max-width: 280px;
+            font-size: 0.85rem;
+        }
+        .footer-col h5 {
+            color: var(--yellow-primary);
+            margin-bottom: 18px;
+            font-size: 1.1rem;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+        .footer-col a {
+            color: #cbd5e6;
+            text-decoration: none;
+        }
+        .footer-col a:hover {
+            color: var(--yellow-primary);
+        }
+        .social-icons {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .social-icons a {
+            background: #1e3a5f;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .copyright {
+            border-top: 1px solid #1e3a5f;
+            padding-top: 28px;
+            text-align: center;
+            font-size: 0.75rem;
+        }
+
+        @media (max-width: 850px) {
+            .page-title h1 {
+                font-size: 2rem;
+            }
+            .news-card {
+                flex-direction: column;
+            }
+            .news-img {
+                width: 100%;
+                height: 140px;
+            }
+            .calendar-day {
+                aspect-ratio: auto;
+                min-height: 65px;
+            }
+        }
+        @media (max-width: 720px) {
+            .mobile-toggle {
+                display: block;
+            }
+            .main-nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                background: white;
+                width: 75%;
+                height: 100%;
+                box-shadow: 6px 0 20px rgba(0,0,0,0.15);
+                transition: 0.3s;
+                z-index: 200;
+                padding: 100px 28px 28px;
+            }
+            .main-nav.open {
+                left: 0;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                gap: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-banner">
+    <div class="container">
+        <i class="fas fa-truck-fast"></i> Mengantarkan kebaikan untuk Indonesia | Distribusi pangan merata & berkualitas
+    </div>
+</div>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <div class="logo-area">
+            <img src="logo bulog.png" alt="Logo BULOG">
+        </div>
+        <div class="mobile-toggle" id="mobileToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav class="main-nav" id="mainNav">
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="tentang.html">Tentang Kami</a></li>
+                <li><a href="pp.html">Pelayanan Publik</a></li>
+                <li><a href="berita.html" class="active">Berita & Informasi</a></li>
+                <li><a href="#">Karir</a></li>
+                <li><a href="#">Kontak</a></li>
+                <li><a href="#">Keterbukaan Informasi</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- Hero -->
+    <section class="news-hero">
+        <div class="container page-title">
+            <div class="badge"><i class="fas fa-newspaper"></i> Terkini & Terpercaya</div>
+            <h1>Berita & <span>Informasi</span> BULOG</h1>
+            <p>Informasi terbaru seputar kebijakan pangan, program pemerintah, dan agenda BULOG di seluruh Indonesia.</p>
+        </div>
+    </section>
+
+    <div class="container news-layout">
+        <!-- KOLOM KIRI: BERITA -->
+        <div class="berita-section">
+            <div class="section-title">Berita Terbaru</div>
+            <div class="news-card">
+                <div class="news-img"><i class="fas fa-chart-line"></i></div>
+                <div class="news-content">
+                    <h4>Harga Beras Stabil Jelang Ramadan, BULOG Siapkan Operasi Pasar</h4>
+                    <div class="news-date"><span><i class="far fa-calendar-alt"></i> 15 Mei 2025</span> <span><i class="far fa-eye"></i> 1.234 views</span></div>
+                    <div class="news-excerpt">BULOG memastikan stok beras nasional aman dan menggelar operasi pasar di 34 provinsi untuk menjaga stabilitas harga...</div>
+                    <a href="#" class="read-more" onclick="alert('Baca selengkapnya: artikel sedang dikembangkan'); return false;">Baca selengkapnya →</a>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="news-img"><i class="fas fa-hand-holding-heart"></i></div>
+                <div class="news-content">
+                    <h4>Penyaluran Bantuan Pangan Tahap II Dimulai, Target 21 Juta Keluarga</h4>
+                    <div class="news-date"><span><i class="far fa-calendar-alt"></i> 10 Mei 2025</span> <span><i class="far fa-eye"></i> 2.105 views</span></div>
+                    <div class="news-excerpt">Pemerintah bersama BULOG menyalurkan bantuan beras 10 kg per bulan untuk penerima manfaat di wilayah prioritas...</div>
+                    <a href="#" class="read-more" onclick="alert('Baca selengkapnya: artikel sedang dikembangkan'); return false;">Baca selengkapnya →</a>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="news-img"><i class="fas fa-store"></i></div>
+                <div class="news-content">
+                    <h4>Rumah Pangan Kita (RPK) Tersedia di 27.000 Lokasi, Mudah Diakses Masyarakat</h4>
+                    <div class="news-date"><span><i class="far fa-calendar-alt"></i> 5 Mei 2025</span> <span><i class="far fa-eye"></i> 890 views</span></div>
+                    <div class="news-excerpt">BULOG memperluas jaringan RPK hingga ke pelosok desa untuk memudahkan akses pangan murah dan berkualitas...</div>
+                    <a href="#" class="read-more" onclick="alert('Baca selengkapnya: artikel sedang dikembangkan'); return false;">Baca selengkapnya →</a>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="news-img"><i class="fas fa-oil-can"></i></div>
+                <div class="news-content">
+                    <h4>Minyakita Tetap Tersedia dengan Harga Rp14.000/Liter, BULOG Jamin Pasokan</h4>
+                    <div class="news-date"><span><i class="far fa-calendar-alt"></i> 28 April 2025</span> <span><i class="far fa-eye"></i> 1.567 views</span></div>
+                    <div class="news-excerpt">Program Minyakita terus berjalan, BULOG menambah titik distribusi di pasar tradisional dan ritel modern...</div>
+                    <a href="#" class="read-more" onclick="alert('Baca selengkapnya: artikel sedang dikembangkan'); return false;">Baca selengkapnya →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- KOLOM KANAN: KALENDER AGENDA -->
+        <div class="agenda-section">
+            <div class="section-title">Kalender Agenda BULOG</div>
+            <div class="agenda-card">
+                <div class="calendar-header">
+                    <h3 id="monthYear"></h3>
+                    <div class="calendar-nav">
+                        <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                        <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="calendar-weekdays">
+                    <span>Min</span><span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span>
+                </div>
+                <div id="calendarDays" class="calendar-days"></div>
+                <div class="event-list" id="eventList">
+                    <h4><i class="fas fa-list-ul"></i> Agenda Bulan Ini</h4>
+                    <div id="eventListContent">Pilih tanggal untuk melihat detail agenda</div>
+                </div>
+            </div>
+
+            <!-- Kategori Informasi -->
+            <div class="info-sidebar">
+                <h4><i class="fas fa-tags"></i> Kategori Informasi</h4>
+                <ul class="category-list">
+                    <li><a href="#" onclick="alert('Filter berita: Bantuan Pangan'); return false;"><i class="fas fa-chevron-right"></i> Bantuan Pangan</a></li>
+                    <li><a href="#" onclick="alert('Filter berita: Operasi Pasar'); return false;"><i class="fas fa-chevron-right"></i> Operasi Pasar</a></li>
+                    <li><a href="#" onclick="alert('Filter berita: Kebijakan Pangan'); return false;"><i class="fas fa-chevron-right"></i> Kebijakan Pangan</a></li>
+                    <li><a href="#" onclick="alert('Filter berita: Program BULOG'); return false;"><i class="fas fa-chevron-right"></i> Program BULOG</a></li>
+                    <li><a href="#" onclick="alert('Filter berita: Siaran Pers'); return false;"><i class="fas fa-chevron-right"></i> Siaran Pers</a></li>
+                </ul>
+            </div>
+
+            <div class="info-sidebar" style="margin-top: 20px;">
+                <h4><i class="fas fa-bell"></i> Notifikasi Agenda</h4>
+                <p style="font-size: 0.85rem;">Dapatkan pengingat jadwal operasi pasar & bantuan pangan melalui email atau WhatsApp. <a href="#" style="color: var(--blue-primary);" onclick="alert('Fitur notifikasi segera hadir'); return false;">Daftar sekarang</a></p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h5><i class="fas fa-warehouse"></i> Perum BULOG</h5>
+                <p>Mengantarkan kebaikan melalui ketahanan pangan dan distribusi merata untuk seluruh Indonesia.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h5>Bisnis Kami</h5>
+                <ul>
+                    <li><a href="#">Produk & Brand</a></li>
+                    <li><a href="#">Rumah Pangan Kita</a></li>
+                    <li><a href="#">Mitra Tani</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Layanan Publik</h5>
+                <ul>
+                    <li><a href="#">Informasi Harga Pangan</a></li>
+                    <li><a href="#">Cadangan Pangan</a></li>
+                    <li><a href="#">Pengaduan Masyarakat</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Kontak Kami</h5>
+                <ul>
+                    <li><i class="fas fa-phone-alt"></i> 021-5252209</li>
+                    <li><i class="fas fa-envelope"></i> bulog@bulog.co.id</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Jakarta Pusat</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 BULOG - Bersama Mengantarkan Kebaikan untuk Pangan Nusantara</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile navigation
+    const mobileBtn = document.getElementById('mobileToggle');
+    const navMenu = document.getElementById('mainNav');
+    if (mobileBtn) {
+        mobileBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+            const icon = mobileBtn.querySelector('i');
+            if (navMenu.classList.contains('open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+    document.querySelectorAll('.main-nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('open');
+            const icon = mobileBtn?.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    });
+
+    // ========== DATA AGENDA ==========
+    const eventsData = {
+        4: { // Mei 2025
+            5: [{ title: "Operasi Pasar Beras", type: "operasi", desc: "Operasi pasar beras SPHP di Pasar Beringharjo Yogyakarta" }],
+            8: [{ title: "Penyaluran Bantuan Pangan", type: "bantuan", desc: "Bantuan beras 10kg untuk 500 KK di Sleman" }],
+            12: [{ title: "Rapat Koordinasi", type: "agenda", desc: "Rapat dengan Pemda DIY" }],
+            15: [{ title: "Operasi Pasar Minyakita", type: "operasi", desc: "Pasar murah Minyakita di 5 titik Jakarta" }],
+            20: [{ title: "Bantuan Pangan Tahap II", type: "bantuan", desc: "Penyaluran serentak di Provinsi Jawa Tengah" }],
+            25: [{ title: "Seminar Pangan", type: "agenda", desc: "Seminar ketahanan pangan nasional" }],
+            28: [{ title: "Operasi Pasar Gula", type: "operasi", desc: "Operasi pasar gula pasir di Surabaya" }]
+        },
+        5: { // Juni 2025
+            2: [{ title: "Bantuan Pangan Lanjutan", type: "bantuan", desc: "Penyaluran untuk wilayah DIY dan Jateng" }],
+            10: [{ title: "Operasi Pasar Terpadu", type: "operasi", desc: "Operasi pasar beras, gula, minyak di Makassar" }],
+            18: [{ title: "Rapat Evaluasi", type: "agenda", desc: "Evaluasi program semester I" }],
+            25: [{ title: "Bantuan Pangan Tahap III", type: "bantuan", desc: "Penyaluran untuk keluarga prasejahtera" }]
+        },
+        6: { // Juli 2025
+            7: [{ title: "Operasi Pasar Ramadhan", type: "operasi", desc: "Persiapan operasi pasar jelang Ramadhan" }],
+            15: [{ title: "BULOG Goes to School", type: "agenda", desc: "Edukasi pangan di sekolah-sekolah" }],
+            22: [{ title: "Bantuan Pangan Khusus", type: "bantuan", desc: "Bantuan untuk daerah rawan pangan" }]
+        }
+    };
+
+    let currentDate = new Date();
+    let currentYear = currentDate.getFullYear();
+    let currentMonth = currentDate.getMonth();
+
+    function renderCalendar() {
+        const firstDay = new Date(currentYear, currentMonth, 1);
+        const startWeekday = firstDay.getDay();
+        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+        const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+        document.getElementById('monthYear').innerHTML = `${monthNames[currentMonth]} ${currentYear}`;
+
+        const calendarDiv = document.getElementById('calendarDays');
+        calendarDiv.innerHTML = '';
+        
+        // hari dari bulan sebelumnya
+        const prevMonthDays = new Date(currentYear, currentMonth, 0).getDate();
+        for (let i = startWeekday - 1; i >= 0; i--) {
+            const date = prevMonthDays - i;
+            calendarDiv.appendChild(createDayCell(date, true));
+        }
+        // hari bulan ini
+        const today = new Date();
+        const isCurrentMonth = (today.getFullYear() === currentYear && today.getMonth() === currentMonth);
+        for (let d = 1; d <= daysInMonth; d++) {
+            const isToday = isCurrentMonth && d === today.getDate();
+            calendarDiv.appendChild(createDayCell(d, false, isToday));
+        }
+        // hari bulan depan
+        const totalCells = Math.ceil((startWeekday + daysInMonth) / 7) * 7;
+        const nextMonthDays = totalCells - (startWeekday + daysInMonth);
+        for (let i = 1; i <= nextMonthDays; i++) {
+            calendarDiv.appendChild(createDayCell(i, true));
+        }
+        
+        updateEventListForMonth();
+    }
+
+    function createDayCell(day, isOtherMonth, isToday = false) {
+        const div = document.createElement('div');
+        div.className = 'calendar-day';
+        if (isOtherMonth) div.classList.add('other-month');
+        if (isToday) div.classList.add('today');
+        
+        const daySpan = document.createElement('div');
+        daySpan.className = 'day-number';
+        daySpan.innerText = day;
+        div.appendChild(daySpan);
+        
+        if (!isOtherMonth) {
+            const monthEvents = eventsData[currentMonth];
+            if (monthEvents && monthEvents[day]) {
+                monthEvents[day].forEach(ev => {
+                    const badge = document.createElement('div');
+                    badge.className = `event-badge ${ev.type}`;
+                    badge.innerText = ev.title.length > 14 ? ev.title.slice(0,12)+'..' : ev.title;
+                    div.appendChild(badge);
+                });
+            }
+        }
+        
+        div.addEventListener('click', () => {
+            if (!isOtherMonth) {
+                showEventsForDate(day);
+            } else {
+                document.getElementById('eventListContent').innerHTML = '<i>Pilih tanggal pada bulan ini untuk melihat agenda.</i>';
+            }
+        });
+        return div;
+    }
+
+    function showEventsForDate(day) {
+        const monthEvents = eventsData[currentMonth];
+        const events = monthEvents ? monthEvents[day] : null;
+        const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+        const container = document.getElementById('eventListContent');
+        if (events && events.length > 0) {
+            let html = `<strong>📅 ${day} ${monthNames[currentMonth]} ${currentYear}</strong><br><br>`;
+            events.forEach(ev => {
+                let icon = ev.type === 'operasi' ? '🛒' : (ev.type === 'bantuan' ? '📦' : '📌');
+                html += `<div style="margin-bottom:12px; padding:8px; background:#fff; border-radius:14px; border-left:4px solid ${ev.type === 'operasi' ? '#2ecc71' : (ev.type === 'bantuan' ? '#e67e22' : '#3498db')}">
+                            <div><strong>${icon} ${ev.title}</strong></div>
+                            <div style="font-size:0.75rem; color:#555;">${ev.desc}</div>
+                         </div>`;
+            });
+            container.innerHTML = html;
+        } else {
+            container.innerHTML = `<i>Tidak ada agenda pada tanggal ${day} ${monthNames[currentMonth]} ${currentYear}.</i>`;
+        }
+    }
+
+    function updateEventListForMonth() {
+        const monthEvents = eventsData[currentMonth];
+        const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+        const container = document.getElementById('eventListContent');
+        if (monthEvents && Object.keys(monthEvents).length > 0) {
+            let allEvents = [];
+            for (let day in monthEvents) {
+                monthEvents[day].forEach(ev => {
+                    allEvents.push({ day: parseInt(day), ...ev });
+                });
+            }
+            allEvents.sort((a,b) => a.day - b.day);
+            let html = `<strong>📋 Agenda ${monthNames[currentMonth]} ${currentYear}:</strong><br><br>`;
+            allEvents.forEach(ev => {
+                let icon = ev.type === 'operasi' ? '🛒' : (ev.type === 'bantuan' ? '📦' : '📌');
+                html += `<div class="event-item">
+                            <div class="event-date">${ev.day}</div>
+                            <div class="event-desc"><strong>${icon} ${ev.title}</strong><br>${ev.desc.length > 60 ? ev.desc.slice(0,57)+'...' : ev.desc}</div>
+                         </div>`;
+            });
+            container.innerHTML = html;
+        } else {
+            container.innerHTML = `<i>Belum ada agenda untuk bulan ini.</i>`;
+        }
+    }
+
+    document.getElementById('prevMonth').addEventListener('click', () => {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        renderCalendar();
+    });
+    document.getElementById('nextMonth').addEventListener('click', () => {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        renderCalendar();
+    });
+
+    renderCalendar();
+</script>
+</body>
+</html>
