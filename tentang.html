@@ -243,14 +243,14 @@
             flex: 1;
             border-radius: 24px;
             padding: 32px;
-            /* Background putih transparan agar gambar latar terlihat di belakang */
-            background: rgba(255, 255, 255, 0.88);
+            /* Background lebih transparan agar gambar terlihat jelas */
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(0px);
             transition: 0.2s;
             border: 1px solid rgba(255,255,255,0.5);
         }
         .vm-card:hover {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.88);
             transform: translateY(-4px);
         }
         .vm-card .icon {
@@ -545,7 +545,7 @@
         </div>
     </section>
 
-    <!-- Visi & Misi: SATU GAMBAR UTUH DI BELAKANG -->
+    <!-- Visi & Misi: SATU GAMBAR UTUH DI BELAKANG, CARD TRANSPARAN -->
     <section class="visi-misi">
         <div class="container">
             <div class="section-header" style="margin-bottom: 20px;">
@@ -573,7 +573,7 @@
         </div>
     </section>
 
-    <!-- Kantor Wilayah Yogyakarta + Map -->
+    <!-- Kantor Wilayah Yogyakarta + Map (LOKASI TERBARU) -->
     <section class="regional-section">
         <div class="container">
             <div class="section-header">
@@ -701,9 +701,11 @@
         });
     });
 
-    // Map OpenStreetMap - Kantor Wilayah Yogyakarta
-    const bulogJogjaLat = -7.74935;
-    const bulogJogjaLon = 110.37320;
+    // ========== UPDATE KOORDINAT LOKASI BARU ==========
+    // Alamat: Jl. Suroto No.6, Kotabaru, Gondokusuman, Yogyakarta
+    // Koordinat perkiraan: -7.7885, 110.3672 (dapat disesuaikan)
+    const bulogJogjaLat = -7.7885;
+    const bulogJogjaLon = 110.3672;
     
     document.addEventListener('DOMContentLoaded', function () {
         const mapElement = document.getElementById('officeMap');
@@ -719,7 +721,7 @@
             const marker = L.marker([bulogJogjaLat, bulogJogjaLon]).addTo(map);
             marker.bindPopup(`
                 <b>Perum BULOG Kanwil Yogyakarta</b><br>
-                Jl. Suroto No.6, 001, Kotabaru<br>
+                Jl. Suroto No.6, Kotabaru, Yogyakarta<br>
                 Telp: (0274) 623456<br>
                 <i>Mengantarkan kebaikan untuk DIY</i>
             `).openPopup();
