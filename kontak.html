@@ -48,7 +48,6 @@
             padding: 8px 0;
             font-size: 0.85rem;
             font-weight: 500;
-            letter-spacing: 0.3px;
         }
         .top-banner i {
             margin-right: 6px;
@@ -103,7 +102,7 @@
             color: var(--blue-primary);
         }
 
-        /* ========== HERO dengan BACKGROUND GAMBAR ========== */
+        /* ========== HERO ========== */
         .contact-hero {
             background-image: linear-gradient(115deg, rgba(0,0,0,0.55), rgba(0,0,0,0.65)), url('12.png');
             background-size: cover;
@@ -111,7 +110,6 @@
             background-repeat: no-repeat;
             padding: 48px 0 56px;
             border-bottom: 1px solid rgba(245,176,66,0.3);
-            position: relative;
         }
         .page-title {
             text-align: center;
@@ -141,78 +139,60 @@
             margin: 16px auto 0;
             color: rgba(255,255,255,0.9);
             font-size: 1rem;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
 
-        /* ========== LAYOUT KONTAK ========== */
+        /* ========== KONTAK LAYOUT - SIMETRIS & RAPI ========== */
         .contact-section {
             padding: 60px 0;
         }
         .contact-grid {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 48px;
         }
-        .contact-info-left {
-            flex: 1.2;
-            min-width: 280px;
+        /* Kolom kiri: info cards */
+        .info-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
         }
-        .contact-form-right {
-            flex: 1.5;
-            min-width: 320px;
+        /* Kolom kanan: form + register */
+        .interaction-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
         }
 
-        /* Kartu informasi kontak dengan background gambar */
-        .info-card {
+        /* Base style untuk semua kartu */
+        .card {
             background: white;
             border-radius: 32px;
             padding: 28px;
-            margin-bottom: 28px;
             box-shadow: 0 10px 20px -5px rgba(0,0,0,0.08);
             border: 1px solid #f0f4f9;
             transition: 0.2s;
-            position: relative;
-            overflow: hidden;
-            background-image: url('images/card-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-blend-mode: overlay;
-            background-color: rgba(255,255,255,0.85);
         }
-        .info-card:nth-child(2) {
-            background-image: url('images/card-service-bg.jpg');
-            background-color: rgba(255,255,255,0.85);
-        }
-        .info-card:hover {
-            transform: translateY(-4px);
+        .card:hover {
+            transform: translateY(-3px);
             border-color: var(--yellow-soft);
         }
-        .info-card h3 {
+        .card h3 {
             font-size: 1.4rem;
             font-weight: 800;
             margin-bottom: 20px;
             color: var(--blue-primary);
             display: flex;
             align-items: center;
-            gap: 12px;
-            background: rgba(255,255,255,0.7);
-            padding: 6px 12px;
-            border-radius: 40px;
-            display: inline-flex;
+            gap: 10px;
         }
-        .info-card h3 i {
+        .card h3 i {
             color: var(--yellow-primary);
         }
         .contact-detail {
-            margin: 16px 0;
+            margin: 14px 0;
             display: flex;
             align-items: center;
             gap: 14px;
-            background: rgba(255,255,255,0.6);
-            padding: 8px 12px;
-            border-radius: 60px;
-            backdrop-filter: blur(2px);
         }
         .contact-detail i {
             width: 28px;
@@ -221,7 +201,6 @@
         }
         .contact-detail p {
             color: var(--gray-text);
-            font-weight: 500;
         }
         .social-media-links {
             display: flex;
@@ -244,50 +223,32 @@
         .social-media-links a:hover {
             background: var(--yellow-primary);
             color: white;
-            transform: translateY(-3px);
         }
 
         /* Peta */
         .map-card {
             background: white;
             border-radius: 32px;
-            padding: 0;
             overflow: hidden;
             border: 1px solid #f0f4f9;
             box-shadow: 0 10px 20px -5px rgba(0,0,0,0.05);
+            padding: 0;
         }
         .map-card h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
             padding: 20px 24px 0 24px;
-            color: var(--blue-primary);
+            margin-bottom: 0;
         }
         #contactMap {
-            height: 280px;
+            height: 260px;
             width: 100%;
             margin-top: 12px;
-            z-index: 1;
         }
 
-        /* Formulir kontak */
-        .form-card {
-            background: white;
-            border-radius: 32px;
-            padding: 32px;
-            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.05);
-            border: 1px solid #f0f4f9;
-            margin-bottom: 32px;
+        /* Formulir */
+        .form-card .form-group {
+            margin-bottom: 18px;
         }
-        .form-card h3 {
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin-bottom: 24px;
-            color: var(--blue-primary);
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group input, .form-group select, .form-group textarea {
+        .form-card input, .form-card select, .form-card textarea {
             width: 100%;
             padding: 14px 18px;
             border: 1px solid #e2e8f0;
@@ -296,7 +257,7 @@
             font-size: 0.9rem;
             transition: 0.2s;
         }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+        .form-card input:focus, .form-card select:focus, .form-card textarea:focus {
             outline: none;
             border-color: var(--yellow-primary);
             box-shadow: 0 0 0 3px rgba(245,176,66,0.2);
@@ -305,82 +266,59 @@
             background: var(--blue-primary);
             color: white;
             border: none;
-            padding: 12px 32px;
+            padding: 12px;
             border-radius: 48px;
             font-weight: 700;
             cursor: pointer;
-            transition: 0.2s;
             width: 100%;
             font-size: 1rem;
+            transition: 0.2s;
         }
         .btn-submit:hover {
             background: #063a5c;
             transform: translateY(-2px);
         }
 
-        /* Kartu Pendaftaran Mitra (di kolom kanan) */
+        /* Kartu pendaftaran mitra */
         .register-card {
-            background: linear-gradient(135deg, #ffffff 0%, #fffaf0 100%);
-            border-radius: 32px;
-            padding: 32px;
-            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.08);
-            border: 1px solid #f0e7d6;
             text-align: center;
-            transition: 0.2s;
-        }
-        .register-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--yellow-primary);
-        }
-        .register-card h3 {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--blue-primary);
-            margin-bottom: 16px;
-        }
-        .register-card h3 i {
-            color: var(--yellow-primary);
-            margin-right: 10px;
         }
         .register-card p {
             color: var(--gray-text);
-            margin-bottom: 24px;
-            line-height: 1.6;
+            margin-bottom: 20px;
         }
         .btn-register {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
             background: var(--yellow-primary);
             color: #1e293b;
             text-decoration: none;
             font-weight: 700;
-            padding: 14px 32px;
+            padding: 12px 20px;
             border-radius: 48px;
+            width: 100%;
             transition: 0.2s;
             font-size: 1rem;
-            border: none;
-            cursor: pointer;
-            width: 100%;
         }
         .btn-register:hover {
             background: #e6a12e;
             transform: translateY(-2px);
             color: white;
         }
-        .register-benefits {
+        .benefit-badges {
             display: flex;
             flex-wrap: wrap;
-            gap: 16px;
-            margin-top: 20px;
+            gap: 10px;
             justify-content: center;
+            margin: 18px 0;
         }
-        .benefit-item {
+        .benefit-badge {
             background: var(--blue-light);
             border-radius: 40px;
-            padding: 6px 16px;
-            font-size: 0.75rem;
+            padding: 5px 14px;
+            font-size: 0.7rem;
             font-weight: 600;
             color: var(--blue-primary);
         }
@@ -443,16 +381,14 @@
             font-size: 0.75rem;
         }
 
-        /* Responsive */
+        /* Responsif */
         @media (max-width: 850px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
             .page-title h1 {
                 font-size: 2rem;
-            }
-            .contact-grid {
-                flex-direction: column;
-            }
-            .contact-detail {
-                flex-wrap: wrap;
             }
         }
         @media (max-width: 720px) {
@@ -477,6 +413,9 @@
             .main-nav ul {
                 flex-direction: column;
                 gap: 24px;
+            }
+            .contact-detail {
+                flex-wrap: wrap;
             }
         }
     </style>
@@ -510,7 +449,6 @@
 </header>
 
 <main>
-    <!-- Hero -->
     <section class="contact-hero">
         <div class="container page-title">
             <div class="badge"><i class="fas fa-headset"></i> Hubungi Kami</div>
@@ -521,14 +459,14 @@
 
     <div class="container contact-section">
         <div class="contact-grid">
-            <!-- Bagian Kiri: Info & Peta -->
-            <div class="contact-info-left">
-                <!-- Kartu 1: Kantor Pusat -->
-                <div class="info-card">
+            <!-- KOLOM KIRI: Informasi + Peta -->
+            <div class="info-cards">
+                <!-- Kartu Kantor Pusat -->
+                <div class="card">
                     <h3><i class="fas fa-building"></i> Kantor Pusat</h3>
                     <div class="contact-detail">
                         <i class="fas fa-map-marker-alt"></i>
-                        <p>Gedung BULOG, Jl. Gatot Subroto No.Kav. 49, RT.5/RW.4, Kuningan Tim., Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12950</p>
+                        <p>Gedung BULOG, Jl. Gatot Subroto No.Kav. 49, Kuningan Timur, Setiabudi, Jakarta Selatan 12950</p>
                     </div>
                     <div class="contact-detail">
                         <i class="fas fa-phone-alt"></i>
@@ -544,8 +482,8 @@
                     </div>
                 </div>
 
-                <!-- Kartu 2: Layanan Pengaduan & Informasi -->
-                <div class="info-card">
+                <!-- Kartu Layanan Pengaduan -->
+                <div class="card">
                     <h3><i class="fas fa-phone-volume"></i> Layanan Pengaduan & Informasi</h3>
                     <div class="contact-detail">
                         <i class="fas fa-phone-alt"></i>
@@ -557,12 +495,12 @@
                     </div>
                     <div class="contact-detail">
                         <i class="fas fa-clock"></i>
-                        <p>Senin–Jumat, 08.00 – 16.30 WIB (kecuali hari libur nasional)</p>
+                        <p>Senin–Jumat, 08.00 – 16.30 WIB</p>
                     </div>
                 </div>
 
-                <!-- Kartu 3: Media Sosial -->
-                <div class="info-card">
+                <!-- Kartu Media Sosial -->
+                <div class="card">
                     <h3><i class="fas fa-share-alt"></i> Media Sosial</h3>
                     <div class="social-media-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -571,20 +509,20 @@
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
-                    <p style="margin-top: 16px; font-size: 0.8rem; background: rgba(255,255,255,0.5); padding: 4px 8px; border-radius: 20px; text-align: center;">Ikuti kami untuk informasi terbaru seputar ketahanan pangan dan program BULOG.</p>
+                    <p style="margin-top: 16px; font-size: 0.8rem; text-align: center;">Ikuti kami untuk informasi terbaru</p>
                 </div>
 
-                <!-- Peta Lokasi Kantor Pusat -->
+                <!-- Peta -->
                 <div class="map-card">
                     <h3><i class="fas fa-map"></i> Lokasi Kantor Pusat</h3>
-                    <div id="contactMap" style="height: 280px; width: 100%;"></div>
+                    <div id="contactMap"></div>
                 </div>
             </div>
 
-            <!-- Bagian Kanan: Formulir Pesan + Kartu Pendaftaran Mitra -->
-            <div class="contact-form-right">
+            <!-- KOLOM KANAN: Form + Pendaftaran Mitra -->
+            <div class="interaction-cards">
                 <!-- Form Kirim Pesan -->
-                <div class="form-card">
+                <div class="card form-card">
                     <h3><i class="fas fa-paper-plane"></i> Kirim Pesan</h3>
                     <form id="contactForm">
                         <div class="form-group">
@@ -608,22 +546,22 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea rows="5" placeholder="Tulis pesan Anda..." required></textarea>
+                            <textarea rows="4" placeholder="Tulis pesan Anda..." required></textarea>
                         </div>
                         <button type="submit" class="btn-submit">Kirim Pesan <i class="fas fa-arrow-right"></i></button>
                     </form>
-                    <p style="margin-top: 20px; font-size: 0.7rem; color: #6c757d; text-align: center;">Dengan mengirim pesan, Anda menyetujui kebijakan privasi BULOG.</p>
+                    <p style="margin-top: 18px; font-size: 0.7rem; color: #6c757d; text-align: center;">Dengan mengirim pesan, Anda menyetujui kebijakan privasi BULOG.</p>
                 </div>
 
-                <!-- Kartu Pendaftaran Mitra RPK (ditempatkan di bawah form) -->
-                <div class="register-card">
+                <!-- Kartu Pendaftaran Mitra RPK -->
+                <div class="card register-card">
                     <h3><i class="fas fa-handshake"></i> Daftar Mitra RPK</h3>
-                    <p>Bergabung menjadi mitra Rumah Pangan Kita (RPK) BULOG. Dapatkan pasokan bahan pokok berkualitas dengan harga kompetitif, didukung penuh oleh BULOG.</p>
-                    <div class="register-benefits">
-                        <span class="benefit-item"><i class="fas fa-check"></i> Harga khusus</span>
-                        <span class="benefit-item"><i class="fas fa-truck"></i> Distribusi terjamin</span>
-                        <span class="benefit-item"><i class="fas fa-chart-line"></i> Pasar luas</span>
-                        <span class="benefit-item"><i class="fas fa-certificate"></i> Resmi BULOG</span>
+                    <p>Bergabung menjadi mitra Rumah Pangan Kita (RPK) BULOG. Dapatkan pasokan bahan pokok berkualitas dengan harga kompetitif.</p>
+                    <div class="benefit-badges">
+                        <span class="benefit-badge"><i class="fas fa-check-circle"></i> Harga khusus</span>
+                        <span class="benefit-badge"><i class="fas fa-truck"></i> Distribusi terjamin</span>
+                        <span class="benefit-badge"><i class="fas fa-chart-line"></i> Pasar luas</span>
+                        <span class="benefit-badge"><i class="fas fa-certificate"></i> Resmi BULOG</span>
                     </div>
                     <a href="https://forms.gle/K2CzSvZojo1PBBdq6" target="_blank" class="btn-register">
                         <i class="fas fa-external-link-alt"></i> Daftar Sekarang via Google Form
@@ -677,10 +615,9 @@
     </div>
 </footer>
 
-<!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-    // Mobile navigation toggle
+    // Mobile toggle
     const mobileBtn = document.getElementById('mobileToggle');
     const navMenu = document.getElementById('mainNav');
     if (mobileBtn) {
@@ -707,40 +644,25 @@
         });
     });
 
-    // Peta OpenStreetMap - Lokasi Kantor Pusat BULOG
+    // Peta
     const bulogLat = -6.2315;
     const bulogLon = 106.8225;
-
     document.addEventListener('DOMContentLoaded', function () {
         const mapElement = document.getElementById('contactMap');
         if (mapElement) {
             const map = L.map('contactMap').setView([bulogLat, bulogLon], 16);
             L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
                 subdomains: 'abcd',
-                maxZoom: 19,
-                minZoom: 12
+                maxZoom: 19
             }).addTo(map);
-            
-            const marker = L.marker([bulogLat, bulogLon]).addTo(map);
-            marker.bindPopup(`
-                <b>Perum BULOG Kantor Pusat</b><br>
-                Gedung BULOG, Jl. Gatot Subroto Kav. 49<br>
-                Kuningan Timur, Jakarta Selatan<br>
-                Telp: (021) 5252209
-            `).openPopup();
-            
-            L.circle([bulogLat, bulogLon], {
-                color: '#F5B042',
-                weight: 2,
-                fillColor: '#0A4B7A',
-                fillOpacity: 0.08,
-                radius: 200
-            }).addTo(map);
+            L.marker([bulogLat, bulogLon]).addTo(map)
+                .bindPopup('<b>Perum BULOG Kantor Pusat</b><br>Gedung BULOG, Jl. Gatot Subroto Kav.49<br>Jakarta Selatan').openPopup();
+            L.circle([bulogLat, bulogLon], { color: '#F5B042', weight: 2, fillColor: '#0A4B7A', fillOpacity: 0.08, radius: 200 }).addTo(map);
         }
     });
 
-    // Formulir kontak - simulasi pengiriman
+    // Form simpan
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
