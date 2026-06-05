@@ -103,7 +103,6 @@
 
         /* ========== HERO DENGAN BACKGROUND GAMBAR ========== */
         .news-hero {
-            /* Ganti path gambar sesuai folder Anda */
             background-image: linear-gradient(115deg, rgba(0,0,0,0.55), rgba(0,0,0,0.65)), url('13.png');
             background-size: cover;
             background-position: center 30%;
@@ -144,7 +143,7 @@
 
         /* ========== LAYOUT DUA KOLOM ========== */
         .news-layout {
-            padding: 60px 0;
+            padding: 60px 0 40px;
             display: flex;
             flex-wrap: wrap;
             gap: 48px;
@@ -218,7 +217,7 @@
             text-decoration: none;
         }
 
-        /* ========== KALENDER ELEGAN & RAPI ========== */
+        /* ========== KALENDER ========== */
         .agenda-card {
             background: white;
             border-radius: 32px;
@@ -258,8 +257,6 @@
             background: var(--yellow-primary);
             color: var(--blue-primary);
         }
-
-        /* Grid kalender - ukuran seragam */
         .calendar-weekdays {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
@@ -278,13 +275,11 @@
         }
         .calendar-day {
             aspect-ratio: 1 / 1;
-            min-width: 0;
             padding: 6px 4px;
             border-bottom: 1px solid #f0f0f0;
             border-right: 1px solid #f0f0f0;
             font-size: 0.85rem;
             font-weight: 500;
-            position: relative;
             cursor: pointer;
             transition: all 0.15s ease;
             display: flex;
@@ -295,8 +290,6 @@
         .calendar-day:hover {
             background: var(--yellow-soft);
             transform: scale(0.98);
-            z-index: 2;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
         }
         .calendar-day.today {
             background: var(--yellow-soft);
@@ -325,15 +318,9 @@
             color: white;
             font-weight: 500;
         }
-        .event-badge.operasi {
-            background: #2ecc71;
-        }
-        .event-badge.bantuan {
-            background: #e67e22;
-        }
-        .event-badge.agenda {
-            background: #3498db;
-        }
+        .event-badge.operasi { background: #2ecc71; }
+        .event-badge.bantuan { background: #e67e22; }
+        .event-badge.agenda { background: #3498db; }
         .event-list {
             padding: 20px;
             border-top: 1px solid #eef2ff;
@@ -348,12 +335,9 @@
             display: flex;
             gap: 12px;
             margin-bottom: 14px;
-            font-size: 0.8rem;
-            align-items: flex-start;
             padding: 8px;
             border-radius: 16px;
             background: white;
-            transition: 0.1s;
         }
         .event-item:hover {
             background: var(--blue-light);
@@ -366,12 +350,6 @@
             font-size: 0.75rem;
             white-space: nowrap;
         }
-        .event-desc strong {
-            display: block;
-            margin-bottom: 2px;
-        }
-
-        /* Sidebar kategori */
         .info-sidebar {
             background: var(--gray-light);
             border-radius: 28px;
@@ -398,7 +376,74 @@
             font-weight: 600;
         }
 
-        /* Footer */
+        /* ========== GALERI PENGHARGAAN & PENCAPAIAN ========== */
+        .gallery-section {
+            padding: 20px 0 70px;
+            background: white;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .gallery-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.05);
+            border: 1px solid #f0f4f9;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .gallery-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--yellow-primary);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12);
+        }
+        .gallery-img {
+            height: 220px;
+            background: var(--blue-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--blue-primary);
+            overflow: hidden;
+        }
+        .gallery-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.3s;
+        }
+        .gallery-card:hover .gallery-img img {
+            transform: scale(1.05);
+        }
+        .gallery-info {
+            padding: 20px;
+        }
+        .gallery-info h4 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+            color: var(--blue-primary);
+        }
+        .gallery-info p {
+            font-size: 0.8rem;
+            color: var(--gray-text);
+        }
+        .gallery-year {
+            display: inline-block;
+            background: var(--yellow-soft);
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        /* ========== FOOTER ========== */
         .footer {
             background: #0B2B40;
             color: #cbd5e6;
@@ -527,7 +572,7 @@
 </header>
 
 <main>
-    <!-- Hero dengan background gambar -->
+    <!-- Hero -->
     <section class="news-hero">
         <div class="container page-title">
             <div class="badge"><i class="fas fa-newspaper"></i> Terkini & Terpercaya</div>
@@ -537,7 +582,7 @@
     </section>
 
     <div class="container news-layout">
-        <!-- KOLOM KIRI: BERITA -->
+        <!-- Kolom Kiri: Berita -->
         <div class="berita-section">
             <div class="section-title">Berita Terbaru</div>
             <div class="news-card">
@@ -578,7 +623,7 @@
             </div>
         </div>
 
-        <!-- KOLOM KANAN: KALENDER AGENDA -->
+        <!-- Kolom Kanan: Kalender & Sidebar -->
         <div class="agenda-section">
             <div class="section-title">Kalender Agenda BULOG</div>
             <div class="agenda-card">
@@ -593,13 +638,12 @@
                     <span>Min</span><span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span>
                 </div>
                 <div id="calendarDays" class="calendar-days"></div>
-                <div class="event-list" id="eventList">
+                <div class="event-list">
                     <h4><i class="fas fa-list-ul"></i> Agenda Bulan Ini</h4>
                     <div id="eventListContent">Pilih tanggal untuk melihat detail agenda</div>
                 </div>
             </div>
 
-            <!-- Kategori Informasi -->
             <div class="info-sidebar">
                 <h4><i class="fas fa-tags"></i> Kategori Informasi</h4>
                 <ul class="category-list">
@@ -610,10 +654,91 @@
                     <li><a href="#" onclick="alert('Filter berita: Siaran Pers'); return false;"><i class="fas fa-chevron-right"></i> Siaran Pers</a></li>
                 </ul>
             </div>
-
             <div class="info-sidebar" style="margin-top: 20px;">
                 <h4><i class="fas fa-bell"></i> Notifikasi Agenda</h4>
                 <p style="font-size: 0.85rem;">Dapatkan pengingat jadwal operasi pasar & bantuan pangan melalui email atau WhatsApp. <a href="#" style="color: var(--blue-primary);" onclick="alert('Fitur notifikasi segera hadir'); return false;">Daftar sekarang</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALERI PENGHARGAAN & PENCAPAIAN -->
+    <div class="gallery-section">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <div class="tagline" style="background: var(--yellow-soft); display: inline-block; padding: 4px 20px; border-radius: 40px; font-size: 0.8rem; font-weight: 700; color: var(--blue-primary); margin-bottom: 12px;">
+                    <i class="fas fa-trophy"></i> Prestasi & Apresiasi
+                </div>
+                <h3 style="font-size: 2rem; font-weight: 800; margin-top: 8px;">Penghargaan & <span style="color: var(--blue-primary);">Pencapaian BULOG</span></h3>
+                <p style="color: var(--gray-text); margin-top: 12px;">Berbagai penghargaan nasional dan internasional yang diraih oleh Perum BULOG dalam mendukung ketahanan pangan Indonesia.</p>
+            </div>
+            <div class="gallery-grid">
+                <!-- Item galeri 1 -->
+                <div class="gallery-card" onclick="alert('Penghargaan TOP DIGITAL 2024 - BULOG meraih penghargaan sebagai perusahaan digital terbaik di sektor logistik pangan.')">
+                    <div class="gallery-img">
+                        <!-- Ganti src dengan file gambar Anda -->
+                        <img src="https://placehold.co/400x300/0A4B7A/FFFFFF?text=TOP+DIGITAL+2024" alt="Penghargaan TOP DIGITAL">
+                    </div>
+                    <div class="gallery-info">
+                        <h4>TOP DIGITAL 2024</h4>
+                        <p>Penghargaan sebagai perusahaan dengan implementasi teknologi digital terbaik di sektor logistik pangan.</p>
+                        <span class="gallery-year">🏆 2024</span>
+                    </div>
+                </div>
+                <!-- Item galeri 2 -->
+                <div class="gallery-card" onclick="alert('ISO 37001:2016 - BULOG meraih sertifikasi Sistem Manajemen Anti Penyuapan.')">
+                    <div class="gallery-img">
+                        <img src="https://placehold.co/400x300/2ecc71/FFFFFF?text=ISO+37001" alt="Sertifikasi ISO">
+                    </div>
+                    <div class="gallery-info">
+                        <h4>ISO 37001:2016</h4>
+                        <p>Sertifikasi Sistem Manajemen Anti Penyuapan (SMAP) dari KPK dan lembaga sertifikasi internasional.</p>
+                        <span class="gallery-year">🏅 2023</span>
+                    </div>
+                </div>
+                <!-- Item galeri 3 -->
+                <div class="gallery-card" onclick="alert('World Food Programme (WFP) Award - BULOG diakui atas kontribusi dalam penanganan darurat pangan.')">
+                    <div class="gallery-img">
+                        <img src="https://placehold.co/400x300/e67e22/FFFFFF?text=WFP+Award" alt="WFP Award">
+                    </div>
+                    <div class="gallery-info">
+                        <h4>WFP Award 2022</h4>
+                        <p>Pengakuan dari World Food Programme atas peran BULOG dalam penanganan darurat pangan selama pandemi.</p>
+                        <span class="gallery-year">🌍 2022</span>
+                    </div>
+                </div>
+                <!-- Item galeri 4 -->
+                <div class="gallery-card" onclick="alert('Kepatuhan Tinggi (Blue) dari KPK - BULOG mendapatkan predikat terbaik dalam penilaian integritas.')">
+                    <div class="gallery-img">
+                        <img src="https://placehold.co/400x300/f1c40f/0A4B7A?text=Blue+Award" alt="Penghargaan Integritas">
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Kepatuhan Tinggi (Blue)</h4>
+                        <p>Penilaian integritas dan kepatuhan tinggi dari Komisi Pemberantasan Korupsi (KPK).</p>
+                        <span class="gallery-year">🔵 2023</span>
+                    </div>
+                </div>
+                <!-- Item galeri 5 -->
+                <div class="gallery-card" onclick="alert('Rekor MURI - Distribusi bantuan pangan tercepat dan terbanyak secara serentak.')">
+                    <div class="gallery-img">
+                        <img src="https://placehold.co/400x300/3498db/FFFFFF?text=MURI+Award" alt="MURI Award">
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Rekor MURI</h4>
+                        <p>Museum Rekor Indonesia (MURI) mencatat BULOG sebagai institusi dengan distribusi bantuan pangan terbanyak.</p>
+                        <span class="gallery-year">🇮🇩 2024</span>
+                    </div>
+                </div>
+                <!-- Item galeri 6 -->
+                <div class="gallery-card" onclick="alert('Green Logistics Award - BULOG meraih penghargaan logistik ramah lingkungan.')">
+                    <div class="gallery-img">
+                        <img src="https://placehold.co/400x300/27ae60/FFFFFF?text=Green+Logistic" alt="Green Logistics">
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Green Logistics Award</h4>
+                        <p>Penghargaan dari Kementerian Lingkungan Hidup atas implementasi rantai pasok ramah lingkungan.</p>
+                        <span class="gallery-year">🌱 2023</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -728,26 +853,22 @@
         const calendarDiv = document.getElementById('calendarDays');
         calendarDiv.innerHTML = '';
         
-        // hari dari bulan sebelumnya
         const prevMonthDays = new Date(currentYear, currentMonth, 0).getDate();
         for (let i = startWeekday - 1; i >= 0; i--) {
             const date = prevMonthDays - i;
             calendarDiv.appendChild(createDayCell(date, true));
         }
-        // hari bulan ini
         const today = new Date();
         const isCurrentMonth = (today.getFullYear() === currentYear && today.getMonth() === currentMonth);
         for (let d = 1; d <= daysInMonth; d++) {
             const isToday = isCurrentMonth && d === today.getDate();
             calendarDiv.appendChild(createDayCell(d, false, isToday));
         }
-        // hari bulan depan
         const totalCells = Math.ceil((startWeekday + daysInMonth) / 7) * 7;
         const nextMonthDays = totalCells - (startWeekday + daysInMonth);
         for (let i = 1; i <= nextMonthDays; i++) {
             calendarDiv.appendChild(createDayCell(i, true));
         }
-        
         updateEventListForMonth();
     }
 

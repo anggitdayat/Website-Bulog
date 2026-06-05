@@ -105,7 +105,6 @@
 
         /* ========== HERO dengan BACKGROUND GAMBAR ========== */
         .contact-hero {
-            /* Ganti path gambar sesuai dengan file Anda */
             background-image: linear-gradient(115deg, rgba(0,0,0,0.55), rgba(0,0,0,0.65)), url('12.png');
             background-size: cover;
             background-position: center 30%;
@@ -174,17 +173,13 @@
             transition: 0.2s;
             position: relative;
             overflow: hidden;
-            /* Background gambar untuk kartu (ganti sesuai file Anda) */
             background-image: url('images/card-bg.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            /* Overlay warna putih transparan agar teks tetap terbaca */
             background-blend-mode: overlay;
             background-color: rgba(255,255,255,0.85);
         }
-        /* Jika ingin kartu pertama dan kedua berbeda background, bisa gunakan class tambahan */
-        /* Untuk kartu Layanan Pengaduan bisa gambar berbeda */
         .info-card:nth-child(2) {
             background-image: url('images/card-service-bg.jpg');
             background-color: rgba(255,255,255,0.85);
@@ -458,14 +453,14 @@
 
     <div class="container contact-section">
         <div class="contact-grid">
-            <!-- Bagian Kiri: Info & Peta (dengan background gambar pada kartu) -->
+            <!-- Bagian Kiri: Info & Peta -->
             <div class="contact-info-left">
-                <!-- Kartu 1: Kantor Pusat -->
+                <!-- Kartu 1: Kantor Pusat (lokasi baru) -->
                 <div class="info-card">
                     <h3><i class="fas fa-building"></i> Kantor Pusat</h3>
                     <div class="contact-detail">
                         <i class="fas fa-map-marker-alt"></i>
-                        <p>Jl. Gajah Mada No.8, Petojo Utara, Gambir, Jakarta Pusat 10130</p>
+                        <p>Gedung BULOG, Jl. Gatot Subroto No.Kav. 49, RT.5/RW.4, Kuningan Tim., Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12950</p>
                     </div>
                     <div class="contact-detail">
                         <i class="fas fa-phone-alt"></i>
@@ -511,7 +506,7 @@
                     <p style="margin-top: 16px; font-size: 0.8rem; background: rgba(255,255,255,0.5); padding: 4px 8px; border-radius: 20px; text-align: center;">Ikuti kami untuk informasi terbaru seputar ketahanan pangan dan program BULOG.</p>
                 </div>
 
-                <!-- Peta Lokasi Kantor Pusat -->
+                <!-- Peta Lokasi Kantor Pusat (koordinat baru) -->
                 <div class="map-card">
                     <h3><i class="fas fa-map"></i> Lokasi Kantor Pusat</h3>
                     <div id="contactMap" style="height: 280px; width: 100%;"></div>
@@ -587,7 +582,7 @@
                 <ul>
                     <li><i class="fas fa-phone-alt"></i> 021-5252209</li>
                     <li><i class="fas fa-envelope"></i> bulog@bulog.co.id</li>
-                    <li><i class="fas fa-map-marker-alt"></i> Jakarta Pusat</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Jakarta Selatan</li>
                 </ul>
             </div>
         </div>
@@ -627,14 +622,15 @@
         });
     });
 
-    // Peta OpenStreetMap - Kantor Pusat BULOG Jakarta
-    const bulogLat = -6.1660;
-    const bulogLon = 106.8220;
+    // Peta OpenStreetMap - Lokasi baru Kantor Pusat BULOG (Gedung BULOG, Gatot Subroto Kav 49)
+    // Koordinat perkiraan untuk Jl. Gatot Subroto Kav 49, Kuningan Timur, Jakarta Selatan: -6.2315, 106.8225
+    const bulogLat = -6.2315;
+    const bulogLon = 106.8225;
 
     document.addEventListener('DOMContentLoaded', function () {
         const mapElement = document.getElementById('contactMap');
         if (mapElement) {
-            const map = L.map('contactMap').setView([bulogLat, bulogLon], 15);
+            const map = L.map('contactMap').setView([bulogLat, bulogLon], 16);
             L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
                 subdomains: 'abcd',
@@ -645,7 +641,8 @@
             const marker = L.marker([bulogLat, bulogLon]).addTo(map);
             marker.bindPopup(`
                 <b>Perum BULOG Kantor Pusat</b><br>
-                Jl. Gajah Mada No.8, Jakarta Pusat<br>
+                Gedung BULOG, Jl. Gatot Subroto Kav. 49<br>
+                Kuningan Timur, Jakarta Selatan<br>
                 Telp: (021) 5252209
             `).openPopup();
             
