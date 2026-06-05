@@ -16,4 +16,5 @@ Setelah itu, buka:
 http://localhost:3000/
 ```
 
-Atau jalankan file `start.bat` di Windows.
+Atau jalankan file `
+` di Windows.

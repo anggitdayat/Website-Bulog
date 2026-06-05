@@ -260,13 +260,23 @@
             font-size: 0.85rem;
             margin: 12px 0;
         }
-        .price {
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: var(--blue-primary);
-            margin-bottom: 20px;
+        .price-rpk {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #2c6e2c;
+            margin: 4px 0;
         }
-        .btn-product {
+        .price-umum {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--blue-primary);
+            margin: 4px 0;
+        }
+        .price-rpk span, .price-umum span {
+            font-weight: 600;
+            color: #1e293b;
+        }
+        .btn-etalase {
             background: transparent;
             border: 1.5px solid var(--blue-primary);
             color: var(--blue-primary);
@@ -277,8 +287,13 @@
             cursor: pointer;
             transition: 0.2s;
             font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 12px;
         }
-        .btn-product:hover {
+        .btn-etalase:hover {
             background: var(--blue-primary);
             color: white;
             border-color: var(--blue-primary);
@@ -381,7 +396,7 @@
             font-size: 0.75rem;
         }
 
-        /* ========== MODAL ========== */
+        /* ========== MODAL POPUP (LEBIH LEBAR) ========== */
         .modal {
             display: none;
             position: fixed;
@@ -401,8 +416,8 @@
             margin: auto;
             padding: 0;
             border-radius: 32px;
-            width: 90%;
-            max-width: 900px;
+            width: 95%;
+            max-width: 1100px;  /* diperlebar */
             position: relative;
             display: flex;
             flex-wrap: wrap;
@@ -425,37 +440,38 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 32px;
-            min-width: 240px;
+            padding: 40px;
+            min-width: 280px;
         }
         .modal-img img {
             max-width: 100%;
-            max-height: 320px;
+            max-height: 400px;  /* gambar lebih besar */
             object-fit: contain;
             border-radius: 24px;
         }
         .modal-info {
             flex: 1;
-            padding: 32px 28px;
+            padding: 40px 36px;
             background: white;
         }
         .modal-info .product-brand {
             margin-bottom: 16px;
         }
         .modal-info h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 800;
             color: #0f172a;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
-        .modal-info .price {
-            font-size: 1.8rem;
-            margin: 16px 0 12px;
+        .modal-info .price-rpk, .modal-info .price-umum {
+            font-size: 1.2rem;
+            margin: 8px 0;
         }
         .modal-info .desc {
             color: var(--gray-text);
-            margin: 16px 0;
+            margin: 20px 0;
             line-height: 1.6;
+            font-size: 1rem;
         }
         .close-modal {
             position: absolute;
@@ -483,10 +499,10 @@
         .modal-btn {
             background: var(--yellow-primary);
             border: none;
-            padding: 12px 24px;
+            padding: 12px 28px;
             border-radius: 48px;
             font-weight: 700;
-            margin-top: 20px;
+            margin-top: 24px;
             cursor: pointer;
             font-size: 1rem;
             display: inline-flex;
@@ -555,9 +571,7 @@
         <nav class="main-nav" id="mainNav">
             <ul>
                 <li><a href="#" class="active">Beranda</a></li>
-                <!-- Tentang Kami mengarah ke file about.html -->
                 <li><a href="tentang.html">Tentang Kami</a></li>
-                <!-- Menu Bisnis dihapus -->
                 <li><a href="pp.html">Pelayanan Publik</a></li>
                 <li><a href="berita.html">Berita & Informasi</a></li>
                 <li><a href="kontak.html">Kontak</a></li>
@@ -589,7 +603,7 @@
                 <p>Beras premium, minyak sehat, tepung, dan ragam produk befood yang praktis.</p>
             </div>
             <div class="product-grid">
-                <!-- Produk 1 -->
+                <!-- Produk 1: SETRA RAMOS -->
                 <div class="product-card">
                     <div class="card-img">
                         <img src="1.png" alt="SETRA RAMOS">
@@ -597,92 +611,97 @@
                     <div class="card-content">
                         <span class="product-brand">Beras Premium</span>
                         <h4>SETRA RAMOS</h4>
-                        <div class="card-desc">Beras premium jenis Setra Ramos dengan tekstur pulen dan aroma khas. Dikemas dalam ukuran 5 kg, ideal untuk konsumsi sehari-hari.</div>
-                        <div class="price">Rp 74.500 /5kg</div>
-                        <button class="btn-product">Lihat Detail</button>
+                        <div class="card-desc">Beras premium jenis Setra Ramos dengan tekstur pulen dan aroma khas. Dikemas dalam ukuran 5 kg.</div>
+                        <div class="price-rpk"><span>Harga RPK:</span> Rp 69.000 /5kg</div>
+                        <div class="price-umum"><span>Harga Umum:</span> Rp 74.500 /5kg</div>
+                        <button class="btn-etalase" data-product="setra"><i class="fas fa-store"></i> Etalase</button>
                     </div>
                 </div>
-                <!-- Produk 2 -->
+                <!-- Produk 2: MANISKITA -->
                 <div class="product-card">
                     <div class="card-img">
-                        <img src="2.png" alt="SLYP SUPER">
+                        <img src="2.png" alt="MANISKITA">
                     </div>
                     <div class="card-content">
                         <span class="product-brand">Gula Pasir</span>
                         <h4>MANISKITA</h4>
-                        <div class="card-desc">Gula pasir putih berkualitas dengan rasa manis alami dan butiran halus. Kemasan 1 kg, cocok untuk kebutuhan rumah tangga maupun usaha kecil.</div>
-                        <div class="price">Rp 73.000 /5kg</div>
-                        <button class="btn-product">Lihat Detail</button>
+                        <div class="card-desc">Gula pasir putih berkualitas, butiran halus, kemasan 1 kg. Cocok untuk rumah tangga & usaha kecil.</div>
+                        <div class="price-rpk"><span>Harga RPK:</span> Rp 14.500 /kg</div>
+                        <div class="price-umum"><span>Harga Umum:</span> Rp 15.500 /kg</div>
+                        <button class="btn-etalase" data-product="maniskita"><i class="fas fa-store"></i> Etalase</button>
                     </div>
                 </div>
-                <!-- Produk 3 -->
+                <!-- Produk 3: NUSAKITA (gula 50kg) -->
                 <div class="product-card">
                     <div class="card-img">
-                        <img src="3.png" alt="Beraskita-Family">
+                        <img src="3.png" alt="NUSAKITA">
                     </div>
                     <div class="card-content">
                         <span class="product-brand">Gula Pasir</span>
                         <h4>NUSAKITA</h4>
-                        <div class="card-desc">Gula pasir dalam kemasan besar 50 kg, khusus untuk kebutuhan industri, usaha kuliner, atau stok grosir. Kualitas premium dengan harga bersaing.
-
-</div>
-                        <div class="price">Rp 875.000 /50 kg</div>
-                        <button class="btn-product">Lihat Detail</button>
+                        <div class="card-desc">Gula pasir kemasan 50 kg khusus untuk industri, usaha kuliner, atau stok grosir.</div>
+                        <div class="price-rpk"><span>Harga RPK:</span> Rp 850.000 /50kg</div>
+                        <div class="price-umum"><span>Harga Umum:</span> Rp 875.000 /50kg</div>
+                        <button class="btn-etalase" data-product="nusakita"><i class="fas fa-store"></i> Etalase</button>
                     </div>
                 </div>
-                <!-- Produk 4 -->
+                <!-- Produk 4: MINYAKITA -->
                 <div class="product-card">
                     <div class="card-img">
                         <img src="4.png" alt="MINYAKITA">
                     </div>
                     <div class="card-content">
-                        <span class="product-brand">Minyak goreng</span>
+                        <span class="product-brand">Minyak Goreng</span>
                         <h4>Minyak Kita</h4>
-                        <div class="card-desc">Minyak goreng sawit berkualitas, jernih, dan tahan terhadap pemanasan tinggi. Kemasan 1 liter, praktis untuk menggoreng berbagai bahan makanan.</div>
-                        <div class="price">Rp 15.700 /kg</div>
-                        <button class="btn-product">Lihat Detail</button>
+                        <div class="card-desc">Minyak goreng sawit berkualitas, jernih, tahan panas tinggi, kemasan 1 liter.</div>
+                        <div class="price-rpk"><span>Harga RPK:</span> Rp 14.500 /liter</div>
+                        <div class="price-umum"><span>Harga Umum:</span> Rp 15.700 /liter</div>
+                        <button class="btn-etalase" data-product="minyakita"><i class="fas fa-store"></i> Etalase</button>
                     </div>
                 </div>
-                <!-- Produk 5 -->
+                <!-- Produk 5: Tepung Terigu Pita Merah -->
                 <div class="product-card">
                     <div class="card-img">
-                        <img src="5.png" alt="Terigu Kita">
+                        <img src="5.png" alt="Terigu Pita Merah">
                     </div>
                     <div class="card-content">
                         <span class="product-brand">Terigu</span>
                         <h4>Tepung Terigu Pita Merah</h4>
-                        <div class="card-desc">Tepung terigu serbaguna, cocok untuk membuat kue, roti, gorengan, dan aneka olahan lainnya. Kemasan 1 kg, praktis dan ekonomis.</div>
-                        <div class="price">Rp 10.000 /kemasan</div>
-                        <button class="btn-product">Lihat Detail</button>
+                        <div class="card-desc">Tepung terigu serbaguna, cocok untuk kue, roti, gorengan. Kemasan 1 kg.</div>
+                        <div class="price-rpk"><span>Harga RPK:</span> Rp 9.500 /kg</div>
+                        <div class="price-umum"><span>Harga Umum:</span> Rp 10.000 /kg</div>
+                        <button class="btn-etalase" data-product="pita"><i class="fas fa-store"></i> Etalase</button>
                     </div>
                 </div>
-                <!-- Produk 6 -->
+                <!-- Produk 6: Tepung Terigu Tulip -->
                 <div class="product-card">
                     <div class="card-img">
-                        <img src="6.png" alt="befood Flour">
+                        <img src="6.png" alt="Tepung Terigu Tulip">
                     </div>
                     <div class="card-content">
                         <span class="product-brand">Terigu</span>
                         <h4>Tepung Terigu Tulip</h4>
-                        <div class="card-desc">Tepung terigu dengan kualitas unggul untuk hasil masakan yang lembut dan mengembang sempurna. Cocok untuk kue kering, roti, dan pastry. Kemasan 1 kg.</div>
-                        <div class="price">Rp 10.000 /kg</div>
-                        <button class="btn-product">Lihat Detail</button>
+                        <div class="card-desc">Tepung terigu kualitas unggul untuk kue kering, roti, pastry. Kemasan 1 kg.</div>
+                        <div class="price-rpk"><span>Harga RPK:</span> Rp 9.500 /kg</div>
+                        <div class="price-umum"><span>Harga Umum:</span> Rp 10.000 /kg</div>
+                        <button class="btn-etalase" data-product="tulip"><i class="fas fa-store"></i> Etalase</button>
                     </div>
                 </div>
-                <!-- Produk 7 -->
+                <!-- Produk 7: Beras SPHP -->
                 <div class="product-card">
                     <div class="card-img">
-                        <img src="7.png" alt="SPHP">
+                        <img src="7.png" alt="Beras SPHP">
                     </div>
                     <div class="card-content">
                         <span class="product-brand">Beras Subsidi</span>
                         <h4>Beras SPHP</h4>
-                        <div class="card-desc">Beras program pemerintah hasil kerja sama Perum BULOG dan Badan Pangan Nasional (Bapanas) untuk stabilisasi pasokan dan harga pangan. Hadir sebagai solusi pangan terjangkau bagi masyarakat.</div>
-                        <div class="price">Rp 57.800 /5kg</div>
-                        <button class="btn-product">Lihat Detail</button>
+                        <div class="card-desc">Beras program pemerintah untuk stabilisasi harga dan pasokan. Kemasan 5 kg.</div>
+                        <div class="price-rpk"><span>Harga RPK:</span> Rp 53.500 /5kg</div>
+                        <div class="price-umum"><span>Harga Umum:</span> Rp 57.800 /5kg</div>
+                        <button class="btn-etalase" data-product="sphp"><i class="fas fa-store"></i> Etalase</button>
                     </div>
                 </div>
-                <!-- Produk 8 -->
+                <!-- Produk 8: befood Drink -->
                 <div class="product-card">
                     <div class="card-img">
                         <img src="8.png" alt="befood Drink">
@@ -690,9 +709,10 @@
                     <div class="card-content">
                         <span class="product-brand">befood</span>
                         <h4>befood Drink</h4>
-                        <div class="card-desc">Minuman sereal kesehatan, tinggi kalsium dan vitamin.</div>
-                        <div class="price">Rp 14.500 /sachet</div>
-                        <button class="btn-product">Lihat Detail</button>
+                        <div class="card-desc">Minuman sereal kesehatan, tinggi kalsium dan vitamin. Kemasan sachet.</div>
+                        <div class="price-rpk"><span>Harga RPK:</span> Rp 13.000 /sachet</div>
+                        <div class="price-umum"><span>Harga Umum:</span> Rp 14.500 /sachet</div>
+                        <button class="btn-etalase" data-product="drink"><i class="fas fa-store"></i> Etalase</button>
                     </div>
                 </div>
             </div>
@@ -769,7 +789,7 @@
     </div>
 </footer>
 
-<!-- Modal Popup -->
+<!-- Modal Popup Lebar -->
 <div id="productModal" class="modal">
     <div class="modal-content">
         <span class="close-modal">&times;</span>
@@ -779,7 +799,8 @@
         <div class="modal-info">
             <span class="product-brand" id="modalBrand"></span>
             <h2 id="modalTitle"></h2>
-            <div class="price" id="modalPrice"></div>
+            <div class="price-rpk" id="modalPriceRPK"></div>
+            <div class="price-umum" id="modalPriceUmum"></div>
             <div class="desc" id="modalDesc"></div>
             <button class="modal-btn" id="modalBuyBtn"><i class="fas fa-shopping-cart"></i> Beli Sekarang</button>
         </div>
@@ -821,21 +842,13 @@
         });
     }
 
-    // Menu development alert (untuk menu selain Beranda dan Tentang Kami)
-    const devMenus = document.querySelectorAll('.menu-dev');
-    devMenus.forEach(menu => {
-        menu.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('Halaman sedang dalam pengembangan. Segera hadir!');
-        });
-    });
-
     // Modal logic
     const modal = document.getElementById('productModal');
     const modalImage = document.getElementById('modalImage');
     const modalBrand = document.getElementById('modalBrand');
     const modalTitle = document.getElementById('modalTitle');
-    const modalPrice = document.getElementById('modalPrice');
+    const modalPriceRPK = document.getElementById('modalPriceRPK');
+    const modalPriceUmum = document.getElementById('modalPriceUmum');
     const modalDesc = document.getElementById('modalDesc');
     const closeModal = document.querySelector('.close-modal');
 
@@ -844,7 +857,8 @@
         modalImage.alt = productData.title;
         modalBrand.textContent = productData.brand;
         modalTitle.textContent = productData.title;
-        modalPrice.textContent = productData.price;
+        modalPriceRPK.innerHTML = `<span>Harga RPK:</span> ${productData.priceRPK}`;
+        modalPriceUmum.innerHTML = `<span>Harga Umum:</span> ${productData.priceUmum}`;
         modalDesc.textContent = productData.desc;
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
@@ -860,23 +874,25 @@
         if (e.target === modal) closeModalFunc();
     });
 
-    // Event listener untuk semua tombol detail produk
-    const detailBtns = document.querySelectorAll('.btn-product');
-    detailBtns.forEach(btn => {
+    // Event listener untuk tombol etalase (mengganti btn-product)
+    const etalaseBtns = document.querySelectorAll('.btn-etalase');
+    etalaseBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             const card = btn.closest('.product-card');
             if (!card) return;
             const imgSrc = card.querySelector('.card-img img')?.src || '';
             const brand = card.querySelector('.product-brand')?.innerText || 'BULOG';
             const title = card.querySelector('h4')?.innerText || 'Produk';
-            const price = card.querySelector('.price')?.innerText || '';
+            const priceRPK = card.querySelector('.price-rpk')?.innerText.replace('Harga RPK:', '').trim() || '';
+            const priceUmum = card.querySelector('.price-umum')?.innerText.replace('Harga Umum:', '').trim() || '';
             const desc = card.querySelector('.card-desc')?.innerText || '';
             
             openModal({
                 img: imgSrc,
                 brand: brand,
                 title: title,
-                price: price,
+                priceRPK: priceRPK,
+                priceUmum: priceUmum,
                 desc: desc
             });
         });
