@@ -327,6 +327,8 @@
             background: #063a5c;
             transform: translateY(-2px);
         }
+
+        /* SISI KANAN: KONTAK KANWIL YOGYAKARTA */
         .contact-info {
             flex: 0.8;
             padding: 40px 32px;
@@ -341,14 +343,37 @@
             color: var(--yellow-primary);
         }
         .contact-info p {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
             gap: 12px;
+            font-size: 0.95rem;
         }
         .contact-info i {
             width: 28px;
             font-size: 1.2rem;
+        }
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .contact-info a:hover {
+            color: var(--yellow-primary);
+        }
+        /* Sosial media link khusus */
+        .sosial-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            padding: 6px 16px 6px 12px;
+            border-radius: 40px;
+            margin-top: 4px;
+            transition: 0.2s;
+        }
+        .sosial-link:hover {
+            background: rgba(255,255,255,0.25);
         }
 
         /* ========== FOOTER ========== */
@@ -479,7 +504,7 @@
 </header>
 
 <main>
-    <!-- Hero dengan background gambar -->
+    <!-- Hero -->
     <section class="services-hero">
         <div class="container page-title">
             <div class="badge"><i class="fas fa-hand-holding-heart"></i> Untuk Masyarakat</div>
@@ -569,7 +594,7 @@
         </div>
     </section>
 
-    <!-- Form Pengaduan Masyarakat -->
+    <!-- Form Pengaduan Masyarakat + Kontak Kanwil Yogyakarta -->
     <section class="contact-layanan" id="pengaduanForm">
         <div class="container">
             <div class="contact-wrap">
@@ -601,13 +626,27 @@
                         <button type="submit" class="btn-submit">Kirim Pengaduan <i class="fas fa-paper-plane"></i></button>
                     </form>
                 </div>
+
+                <!-- KONTAK KANWIL YOGYAKARTA (diganti) -->
                 <div class="contact-info">
-                    <h4><i class="fas fa-headset"></i> Hubungi Kami</h4>
-                    <p><i class="fas fa-phone-alt"></i> 021-5252209 (Pusat)</p>
-                    <p><i class="fas fa-envelope"></i> pengaduan@bulog.co.id</p>
-                    <p><i class="fab fa-whatsapp"></i> 0811-1234-567 (WA Pengaduan)</p>
+                    <h4><i class="fas fa-building"></i> BULOG Kanwil Yogyakarta</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Suroto No.6, Kotabaru, Gondokusuman, Yogyakarta 55224</p>
+                    <p><i class="fas fa-phone-alt"></i> (0274) 623456 / 623457</p>
+                    <p><i class="fas fa-envelope"></i> kanwil.jogja@bulog.co.id</p>
+                    <p>
+                        <i class="fab fa-whatsapp"></i>
+                        <a href="https://api.whatsapp.com/send?phone=628111967016" target="_blank" class="sosial-link">
+                            <i class="fab fa-whatsapp"></i> Hubungi via WhatsApp
+                        </a>
+                    </p>
+                    <p>
+                        <i class="fab fa-instagram"></i>
+                        <a href="https://www.instagram.com/bulog.jogja?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="sosial-link">
+                            <i class="fab fa-instagram"></i> @bulog.jogja
+                        </a>
+                    </p>
                     <p><i class="fas fa-clock"></i> Senin–Jumat, 08.00–16.00 WIB</p>
-                    <p><i class="fas fa-building"></i> Kantor Pusat: Jl. Gajah Mada No.8, Jakarta Pusat</p>
+                    <p style="margin-top: 20px; font-size: 0.85rem; opacity: 0.8;">Layanan pengaduan & informasi publik wilayah DIY dan sekitarnya.</p>
                 </div>
             </div>
         </div>
@@ -685,7 +724,7 @@
         });
     });
 
-    // Form pengaduan sederhana (simulasi)
+    // Form pengaduan
     const form = document.getElementById('complaintForm');
     if (form) {
         form.addEventListener('submit', (e) => {
