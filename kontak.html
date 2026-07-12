@@ -150,20 +150,17 @@
             grid-template-columns: 1fr 1fr;
             gap: 48px;
         }
-        /* Kolom kiri: info cards */
         .info-cards {
             display: flex;
             flex-direction: column;
             gap: 28px;
         }
-        /* Kolom kanan: form + register */
         .interaction-cards {
             display: flex;
             flex-direction: column;
             gap: 28px;
         }
 
-        /* Base style untuk semua kartu */
         .card {
             background: white;
             border-radius: 32px;
@@ -225,7 +222,6 @@
             color: white;
         }
 
-        /* Peta */
         .map-card {
             background: white;
             border-radius: 32px;
@@ -244,7 +240,6 @@
             margin-top: 12px;
         }
 
-        /* Formulir */
         .form-card .form-group {
             margin-bottom: 18px;
         }
@@ -279,7 +274,6 @@
             transform: translateY(-2px);
         }
 
-        /* Kartu pendaftaran mitra */
         .register-card {
             text-align: center;
         }
@@ -323,7 +317,6 @@
             color: var(--blue-primary);
         }
 
-        /* Footer */
         .footer {
             background: #0B2B40;
             color: #cbd5e6;
@@ -381,7 +374,6 @@
             font-size: 0.75rem;
         }
 
-        /* Responsif */
         @media (max-width: 850px) {
             .contact-grid {
                 grid-template-columns: 1fr;
@@ -453,36 +445,36 @@
         <div class="container page-title">
             <div class="badge"><i class="fas fa-headset"></i> Hubungi Kami</div>
             <h1>Kontak & <span>Layanan</span> BULOG</h1>
-            <p>Kami siap mendengar saran, keluhan, dan kebutuhan informasi Anda seputar pangan dan pelayanan BULOG.</p>
+            <p>Kami siap mendengar saran, keluhan, dan kebutuhan informasi Anda seputar pangan dan pelayanan BULOG di wilayah Yogyakarta dan sekitarnya.</p>
         </div>
     </section>
 
     <div class="container contact-section">
         <div class="contact-grid">
-            <!-- KOLOM KIRI: Informasi + Peta -->
+            <!-- KOLOM KIRI: Informasi Kanwil Yogyakarta + Peta -->
             <div class="info-cards">
-                <!-- Kartu Kantor Pusat -->
+                <!-- Kartu Kantor Wilayah Yogyakarta -->
                 <div class="card">
-                    <h3><i class="fas fa-building"></i> Kantor Pusat</h3>
+                    <h3><i class="fas fa-building"></i> Kantor Wilayah Yogyakarta</h3>
                     <div class="contact-detail">
                         <i class="fas fa-map-marker-alt"></i>
-                        <p>Gedung BULOG, Jl. Gatot Subroto No.Kav. 49, Kuningan Timur, Setiabudi, Jakarta Selatan 12950</p>
+                        <p>Jl. Suroto No.6, Kotabaru, Gondokusuman, Yogyakarta 55224</p>
                     </div>
                     <div class="contact-detail">
                         <i class="fas fa-phone-alt"></i>
-                        <p>(021) 5252209, (021) 6340888</p>
+                        <p>(0274) 623456 / 623457</p>
                     </div>
                     <div class="contact-detail">
                         <i class="fas fa-fax"></i>
-                        <p>(021) 6340890</p>
+                        <p>(0274) 623458</p>
                     </div>
                     <div class="contact-detail">
                         <i class="fas fa-envelope"></i>
-                        <p>humas@bulog.co.id</p>
+                        <p>kanwil.jogja@bulog.co.id</p>
                     </div>
                 </div>
 
-                <!-- Kartu Layanan Pengaduan -->
+                <!-- Kartu Layanan Pengaduan & Informasi (tetap nasional, tapi ditambahkan kontak lokal) -->
                 <div class="card">
                     <h3><i class="fas fa-phone-volume"></i> Layanan Pengaduan & Informasi</h3>
                     <div class="contact-detail">
@@ -496,6 +488,9 @@
                     <div class="contact-detail">
                         <i class="fas fa-clock"></i>
                         <p>Senin–Jumat, 08.00 – 16.30 WIB</p>
+                    </div>
+                    <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #eef2ff;">
+                        <p style="font-size: 0.85rem; color: var(--blue-primary);"><i class="fas fa-location-dot"></i> Layanan lokal Yogyakarta: (0274) 623456</p>
                     </div>
                 </div>
 
@@ -512,16 +507,15 @@
                     <p style="margin-top: 16px; font-size: 0.8rem; text-align: center;">Ikuti kami untuk informasi terbaru</p>
                 </div>
 
-                <!-- Peta -->
+                <!-- Peta Lokasi Kanwil Yogyakarta -->
                 <div class="map-card">
-                    <h3><i class="fas fa-map"></i> Lokasi Kantor Pusat</h3>
+                    <h3><i class="fas fa-map"></i> Lokasi Kantor Wilayah Yogyakarta</h3>
                     <div id="contactMap"></div>
                 </div>
             </div>
 
-            <!-- KOLOM KANAN: Form + Pendaftaran Mitra -->
+            <!-- KOLOM KANAN: Form + Pendaftaran Mitra (tetap) -->
             <div class="interaction-cards">
-                <!-- Form Kirim Pesan -->
                 <div class="card form-card">
                     <h3><i class="fas fa-paper-plane"></i> Kirim Pesan</h3>
                     <form id="contactForm">
@@ -553,7 +547,6 @@
                     <p style="margin-top: 18px; font-size: 0.7rem; color: #6c757d; text-align: center;">Dengan mengirim pesan, Anda menyetujui kebijakan privasi BULOG.</p>
                 </div>
 
-                <!-- Kartu Pendaftaran Mitra RPK -->
                 <div class="card register-card">
                     <h3><i class="fas fa-handshake"></i> Daftar Mitra RPK</h3>
                     <p>Bergabung menjadi mitra Rumah Pangan Kita (RPK) BULOG. Dapatkan pasokan bahan pokok berkualitas dengan harga kompetitif.</p>
@@ -603,9 +596,9 @@
             <div class="footer-col">
                 <h5>Kontak Kami</h5>
                 <ul>
-                    <li><i class="fas fa-phone-alt"></i> 021-5252209</li>
-                    <li><i class="fas fa-envelope"></i> bulog@bulog.co.id</li>
-                    <li><i class="fas fa-map-marker-alt"></i> Jakarta Selatan</li>
+                    <li><i class="fas fa-phone-alt"></i> (0274) 623456</li>
+                    <li><i class="fas fa-envelope"></i> kanwil.jogja@bulog.co.id</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Yogyakarta</li>
                 </ul>
             </div>
         </div>
@@ -644,21 +637,21 @@
         });
     });
 
-    // Peta
-    const bulogLat = -6.2315;
-    const bulogLon = 106.8225;
+    // Peta untuk Kanwil Yogyakarta
+    const jogjaLat = -7.7890;
+    const jogjaLon = 110.3680;
     document.addEventListener('DOMContentLoaded', function () {
         const mapElement = document.getElementById('contactMap');
         if (mapElement) {
-            const map = L.map('contactMap').setView([bulogLat, bulogLon], 16);
+            const map = L.map('contactMap').setView([jogjaLat, jogjaLon], 16);
             L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
                 subdomains: 'abcd',
                 maxZoom: 19
             }).addTo(map);
-            L.marker([bulogLat, bulogLon]).addTo(map)
-                .bindPopup('<b>Perum BULOG Kantor Pusat</b><br>Gedung BULOG, Jl. Gatot Subroto Kav.49<br>Jakarta Selatan').openPopup();
-            L.circle([bulogLat, bulogLon], { color: '#F5B042', weight: 2, fillColor: '#0A4B7A', fillOpacity: 0.08, radius: 200 }).addTo(map);
+            L.marker([jogjaLat, jogjaLon]).addTo(map)
+                .bindPopup('<b>BULOG Kanwil Yogyakarta</b><br>Jl. Suroto No.6, Kotabaru<br>Gondokusuman, Yogyakarta').openPopup();
+            L.circle([jogjaLat, jogjaLon], { color: '#F5B042', weight: 2, fillColor: '#0A4B7A', fillOpacity: 0.08, radius: 200 }).addTo(map);
         }
     });
 
